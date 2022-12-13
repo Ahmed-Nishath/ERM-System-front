@@ -30,12 +30,11 @@ const WorkOrderDetails = () => {
             <div id="update-button">
               <img src={editIcon} alt="edit" />
               <button>Update</button>
-              
             </div>
-
-            <div id="delete-button">
+            
+            <div onClick={handleClick} id="delete-button">
               <img src={deleteIcon} alt="delete" />
-              <button onClick={handleClick}>Delete</button>
+              <button >Delete</button>
             </div>
           </div>
           

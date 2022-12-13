@@ -52,7 +52,7 @@
       }
     },
     {
-      "woNumber": "20221212",
+      "woNumber": "WO202212126582",
       "customer": {
         "name": "Rifdi",
         "nic": "962544783V",
@@ -67,6 +67,40 @@
         "warrentyStatus": "OVER WARRENTY"
       },
       "id": 4
+    },
+    {
+      "woNumber": "WO202212139856",
+      "customer": {
+        "name": "Shiraf",
+        "nic": "985624155V",
+        "address": "10/21, main street, Beruwela",
+        "contact": "0740220182",
+        "email": "monoshiraf2582@gmail.com"
+      },
+      "product": {
+        "productName": "Washing Machine",
+        "serialNumber": "WM-7842560077",
+        "saleDate": "2010-09-14",
+        "warrentyStatus": "OVER WARRENTY"
+      },
+      "id": 5
+    },
+    {
+      "woNumber": "WO202212136180",
+      "customer": {
+        "name": "Fasith",
+        "nic": "970255892V",
+        "address": "51, eluwankulam road, Puttlam",
+        "contact": "0774856850",
+        "email": "fashith45820@gmail.com"
+      },
+      "product": {
+        "productName": "Lap-top",
+        "serialNumber": "lp-5895001-78",
+        "saleDate": "2022-12-01",
+        "warrentyStatus": "UNDER WARRENTY"
+      },
+      "id": 6
     }
   ]
 }

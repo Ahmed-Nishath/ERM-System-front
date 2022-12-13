@@ -12,12 +12,12 @@ const WorkOrderList = ({workorders}) => {
         {
           workorders.map((wo) => {
             return (
-              <div className="wo-previwe" key={wo.id}>
-                <div><Link to={`/workorder/${wo.id}`}> {wo.woNumber} </Link> </div>
+              <Link id="wo-link" to={`/workorder/${wo.id}`}> <div className="wo-previwe" key={wo.id}>
+                <div>{wo.woNumber}  </div>
                 <div> {wo.product.productName} </div>
                 <div> {wo.customer.name} </div>
                 <div> {wo.customer.contact} </div>
-              </div>
+              </div></Link>
             );
           })
         }

@@ -2,14 +2,13 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 const CreateWorkOrder = () => {
-    // const rand = Math.floor(1000 + Math.random() * 9000);
+    const rand = Math.floor(1000 + Math.random() * 9000);
 
     var today = new Date();
     var dd = String(today.getDate()).padStart(2,'0');
     var mm = String(today.getMonth()+1).padStart(2,'0'); //Januaru=0
     var yyyy = String(today.getFullYear()).padStart(2,'0');
-    const WOnumber = yyyy+mm+dd;
-    //Create WO here
+    const WOnumber = "WO"+yyyy+mm+dd+""+rand;
 
     const [name, setName] = useState('');
     const [nic, setNIC] = useState('');
@@ -61,6 +60,7 @@ const CreateWorkOrder = () => {
     return ( 
         <div>
             <form onSubmit={handleSubmit}>
+                <h2>Create New Work Order</h2>
                 <div className="create-form">
                     <div className="form-user-info">
                         <h4>User Information</h4>
