@@ -68,7 +68,7 @@ textarea:focus, input:focus{
 .buttons{
   float: right;
   text-align: center;
-  background-color: rgb(104, 104, 104);
+  background-color: rgb(100, 100, 100);
   color: rgb(0, 1, 1);
   border: none;
   outline: none;
@@ -91,14 +91,15 @@ textarea:focus, input:focus{
   border: none;
   outline: none;
   font-size: 18px;
-  background-color: rgba(240, 248, 255, 0);
+  background-color: rgba(255, 255, 255, 0);
   margin-top: 7px;
   margin-left: 8px;
+  font-weight: 500;
 }
 
 .buttons:hover{
   background-color: rgb(0, 70, 15);
-  box-shadow: 1px 3px 7px rgb(0, 124, 21);
+  box-shadow: 1px 2px 7px rgb(68, 68, 68);
 }
 
 .search{
@@ -196,7 +197,8 @@ p ~ hr{
 
 .product ,.customer{
   width: 50%;  
-  background-color: rgba(232, 232, 232, 0.848);
+  background-color: rgba(255, 255, 255);
+  box-shadow: 2px 2px 7px rgb(92, 92, 92);
   padding-left: 25px;
   margin-right: 25px;
   border: none;
@@ -225,6 +227,9 @@ p ~ hr{
   padding-block: 20px;
   padding-inline: 20px;
   font-size: 15px;
+  box-shadow: 2px 2px 7px rgb(92, 92, 92);
+  margin-top: 8px;
+  margin-left: -15px;
 }
 
 b{
@@ -281,38 +286,40 @@ b{
 }
 
 .user-view-buttons{
+  background-color: rgb(168, 168, 168);
+  height: 55px;
+  width: 230px;
+  border-radius: 30px;
+  margin: 15px;
+}
+
+#user-decisions{
+  display: block;
+}
+
+.user-view-buttons-container{
   display: flex;
   justify-content: space-between;
-  height: 50px;
-  margin-top: 45px;
+  margin-top: 40px;
 }
 
-.user-view-buttons button{
-  border: none;
-  background-color: rgb(0, 227, 182);
-  font-size: 18px;
-  border-radius: 30px;
-  padding: 20px;
-  text-align: center;
-  margin: auto;
-  justify-content: center;
-  margin-inline: 30px;
-  margin-bottom: 40px;
-  width: 200px;
-  border: none;
-  outline: none;
-}
-
-.user-view-buttons button:hover{
-  box-shadow: 2px 4px 7px rgb(0, 153, 15);
-  background-color: rgb(0, 103, 0);
-  color: rgb(255, 255, 255);
+.user-view-buttons:hover{
+  box-shadow: 1px 2px 7px rgb(68, 68, 68);
+  background-color: rgb(148, 0, 0);
   cursor: pointer;
 }
 
-#user-reject:hover{
-  box-shadow: 2px 4px 7px rgb(191, 0, 0);
-  background-color: rgb(148, 0, 0);
+.user-view-buttons > img{
+  margin-left: 8px;
+  margin-top: 7px;
+}
+
+.user-view-buttons > div{
+  margin-top: -38px;
+  margin-left: 60px;
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
 }
 
 select{
@@ -366,7 +373,7 @@ select{
 .login-box button:hover, form > button:hover{
   background-color: rgb(0, 104, 113);
   color: white;
-  box-shadow: 2px 4px 7px rgb(0, 190, 177);
+  box-shadow: 1px 2px 7px rgb(68, 68, 68);
 }
 
 form > button{
@@ -394,6 +401,7 @@ form > button{
   border: none;
   border-radius: 12px;
   margin-bottom: 18px;
+  box-shadow: 1px 1px 3px rgba(114, 114, 114, 0.222);
 }
 
 .form-user-info, .form-product-info{
@@ -431,12 +439,11 @@ select, option{
   font-size: 18px;  
   border: none;
   outline: none;
-  background-color: rgb(209, 209, 209);
-  color: rgb(56, 56, 56);
+  color: rgb(33, 32, 32);
 }
 
 #delete-button, #update-button{
-  background-color: rgb(116, 116, 116);
+  background-color: rgb(115, 115, 115);
   border-radius: 20px;
   border: none;
   width: 140px;
@@ -449,23 +456,24 @@ select, option{
   height: 30px;
   margin-left: 20px;
   margin-top: 5px;
+  margin-right: -12px;
 }
 
 #delete-button button, #update-button button{
   background-color: rgba(255, 255, 255, 0);
   color: rgb(245, 245, 245);
-  width: 500px;
+  width: 100%;
   height: 100%;
 }
 
 #update-button:hover{
   background-color: rgb(0, 117, 2);
-  box-shadow: 1px 2px 7px rgb(3, 185, 0);
+  box-shadow: 1px 2px 7px rgb(68, 68, 68);
 }
 
 #delete-button:hover{
   background-color: rgb(147, 0, 0);
-  box-shadow: 1px 2px 7px rgb(206, 4, 4);
+  box-shadow: 1px 2px 7px rgb(68, 68, 68);
 }
 
 .not-found{
@@ -479,20 +487,29 @@ select, option{
   color: rgb(1, 31, 79);
 }
 
-.admin-dashboard{
+.admin-dashboard-view{
   display: flex;
+  background-color: rgb(255, 255, 255);
 }
 
 .side-panel{
-  background-color: aqua;
-  width: 20%;
-  height: 500px;
+  background-color: rgb(36, 36, 36);
+  width: 140px;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.dashboard{
-  background-color: brown;
-  width: 80%; 
-  height: 500px;
+#dashboard-heading{
+  text-align: left;
+  margin-left: 68px;
+  font-size: 35px;
+  color: rgb(30, 30, 30);
+}
+
+.dashboard-boxes{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .box{
@@ -500,9 +517,8 @@ select, option{
   height: 120px;
   border-radius: 25px;
   margin: 20px;
-
   background: rgb(94,94,94);
-  background: linear-gradient(0deg, rgb(74, 74, 74) 0%, rgb(121, 121, 121) 49%, rgb(174, 174, 174) 100%);
+  background: linear-gradient(0deg, rgb(74, 74, 74) 0%, rgb(121, 121, 121) 49%, rgb(196, 196, 196) 100%);
   }
 
 .box-image{
@@ -521,7 +537,7 @@ select, option{
 }
 
 .box:hover{
-  background-color: rgb(135, 135, 135);
+  background: linear-gradient(0deg, rgb(2, 35, 93) 0%, rgb(14, 63, 197) 49%, rgb(72, 149, 250) 100%);
   box-shadow: 3px 3px 7px rgb(74, 74, 74);
   transform:scale(1.02);
 }
@@ -534,16 +550,22 @@ select, option{
   text-align: center;
 }
 
-.dashboard-boxes{
+
+.main-container{
   display: flex;
+  background-color: rgb(241, 241, 241);
 }
 
-#dashboard{
- text-align: left;
-
-
+.side-panel{
+  background-color: rgb(36, 36, 36);
+  width: 115px;
+  height: 100vh;
+  overflow: hidden;
 }
 
+.content-container{
+  width: 100%;
+}
 
 
 

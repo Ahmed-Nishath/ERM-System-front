@@ -1,5 +1,4 @@
-import searchIcon from "./search.svg"
-import {Link} from 'react-router-dom';
+import searchIcon from "./Icons/search.svg"
 
 const SearchBar = () => {
     return ( 

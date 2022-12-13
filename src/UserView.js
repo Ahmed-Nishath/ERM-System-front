@@ -1,4 +1,7 @@
 import SearchBar from "./search";
+import approveImg from "./Icons/approve.svg"
+import rejectImg from "./Icons/reject.svg"
+import contactImg from "./Icons/contact.svg"
 
 const UserView = () => {
     return ( 
@@ -21,12 +24,23 @@ const UserView = () => {
                         <div><b>Estimated Time</b><br/> {"10 Days"}</div>  
                     </div>
 
-                    <div className="user-view-buttons">
-                        <div>
-                            <button>Approve estimate</button><br/>
-                            <button id="user-reject">Reject estimate</button>
+                    <div className="user-view-buttons-container">
+                        <div id="user-decisions">
+                            <div id="user-approv" className="user-view-buttons">
+                                <img src={approveImg} alt="Approve" />
+                                <div>Approve estimate</div>
+                            </div>
+
+                            <div id="user-reject" className="user-view-buttons">
+                                <img src={rejectImg} alt="Reject" />
+                                <div>Reject estimate</div>
+                            </div>
                         </div>
-                        <button>Contact Technician</button>
+                        
+                        <div id="user-contact" className="user-view-buttons">
+                            <img src={contactImg} alt="contact" />
+                            <div>Contact Technician</div> 
+                        </div>
                     </div>
                 </div>
         </div>

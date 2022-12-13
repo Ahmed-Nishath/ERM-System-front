@@ -1,7 +1,7 @@
 import { useHistory, useParams } from "react-router-dom";
 import useFetch from "./useFetch";
-import deleteIcon from "./delete.svg"
-import editIcon from "./edit.svg"
+import deleteIcon from "./Icons/delete.svg"
+import editIcon from "./Icons/edit.svg"
 
 const WorkOrderDetails = () => {
   const { id } = useParams();

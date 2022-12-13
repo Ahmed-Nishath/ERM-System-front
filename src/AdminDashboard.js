@@ -1,31 +1,35 @@
-import workorderImg from "./workorder.svg";
-import technicianImg from "./technician.svg";
-import deliveryImg from "./delivery.svg";
-import paymentImg from "./payment.svg";
-import partsImg from "./parts.svg";
-import statImg from "./stat.svg";
-import stockImg from "./stock.svg";
+import { Link } from "react-router-dom";
+import workorderImg from "./Icons/workorder.svg";
+import technicianImg from "./Icons/technician.svg";
+import deliveryImg from "./Icons/delivery.svg";
+import paymentImg from "./Icons/payment.svg";
+import partsImg from "./Icons/parts.svg";
+import statImg from "./Icons/stat.svg";
+import stockImg from "./Icons/stock.svg";
 
 import Box from "./Box";
 
 const AdminDashboard = () => {
     return ( 
-        <div className="admin-dashboard">
-            <div className="side-panel">
-                
-            </div>
-
-            <div>
-                <h2 id="dashboard">Dashboard</h2>
-                <div className="dashboard-boxes">
+        <div>
+            <h2 id="dashboard-heading">Dashboard</h2>
+            <hr/>
+            <div className="dashboard-boxes">
+                <Link to="/workOrders">
                     <Box name={"WorkOrders"} image={workorderImg}/>
-                    <Box name={"Technicians"} image={technicianImg}/>
-                    <Box name={"Delivery"} image={deliveryImg}/>
-                    <Box name={"Payments"} image={paymentImg}/>
-                    <Box name={"Parts"} image={partsImg}/>
-                    <Box name={"Bussines"} image={statImg}/>
-                    <Box name={"Stocks"} image={stockImg}/>
-                </div>
+                </Link>
+
+                <Box name={"Technicians"} image={technicianImg}/>
+                <Box name={"Delivery"} image={deliveryImg}/>
+                <Box name={"Payments"} image={paymentImg}/>
+                <Box name={"Parts"} image={partsImg}/>
+                <Box name={"Bussines"} image={statImg}/>
+                <Box name={"Stocks"} image={stockImg}/>
+                
+                <Box name={"Untitled"} image={stockImg}/>
+                <Box name={"Untitled"} image={stockImg}/>
+                <Box name={"Untitled"} image={stockImg}/>
+                <Box name={"Untitled"} image={stockImg}/>
             </div>
         </div>
      );
