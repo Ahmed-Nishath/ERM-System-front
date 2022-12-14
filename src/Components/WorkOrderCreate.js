@@ -124,8 +124,8 @@ const CreateWorkOrder = () => {
                         </select>
                     </div>
                 </div>    
-                { !isPending && <button>Create</button> }
-                { isPending && <button disabled>Please wait</button> }
+                { !isPending && <button className="create-wo-form-button">Create</button> }
+                { isPending && <button className="create-wo-form-button" disabled>Please wait</button> }
             </form>
         </div>    
      );

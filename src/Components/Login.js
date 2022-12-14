@@ -1,7 +1,7 @@
 const Login = () => {
     return ( 
-        <div className="login-page">
-            <h1>ERM SYSTEM</h1>
+        <div>
+            <hr />
             <div className="login-box">
                 <form >
                     <div className="login-box-label">

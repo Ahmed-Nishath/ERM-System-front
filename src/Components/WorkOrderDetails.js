@@ -1,5 +1,5 @@
 import { useHistory, useParams } from "react-router-dom";
-import useFetch from "./useFetch";
+import useFetch from "../FunctionUseFetch";
 import deleteIcon from "./Icons/delete.svg"
 import editIcon from "./Icons/edit.svg"
 
@@ -13,14 +13,14 @@ const WorkOrderDetails = () => {
     fetch('http://localhost:8000/workOrders/' + wo.id, {
       method: 'DELETE'
     }).then(()=>{
-      history.push('/');
+      history.push('/workorders');
       window.location.reload(true); //find a better method to reset the form
     })
   }
 
   return (
-    <div className="workorder-details">
-      {isPending && <div id="loading">Loading...</div>}
+    <div>
+      {isPending && <div className="loading">Loading...</div>}
       {error && <div>{error}</div>}
 
       {wo && (

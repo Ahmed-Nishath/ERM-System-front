@@ -1,40 +1,6 @@
 {
   "workOrders": [
     {
-      "id": 1,
-      "woNumber": "WO202212020001",
-      "customer": {
-        "name": "Nishath",
-        "nic": "980200892V",
-        "address": "160, Green lane drive, Badulla",
-        "contact": "0778983262",
-        "email": "ahmednishath111@gmail.com"
-      },
-      "product": {
-        "productName": "Sewing Machine",
-        "serialNumber": "P002525125XD",
-        "saleDate": "2012-01-02",
-        "warrentyStatus": "UNDER WARRENTY"
-      }
-    },
-    {
-      "id": 2,
-      "woNumber": "WO202208120079",
-      "customer": {
-        "name": "Riyaj",
-        "nic": "960254752V",
-        "address": "2/3, Vilpattu lower division, Puttlam",
-        "contact": "0768726587",
-        "email": "riyajahmed784256@gmail.com"
-      },
-      "product": {
-        "productName": "Electronic Grinder",
-        "serialNumber": "32CV-110",
-        "saleDate": "2020-05-12",
-        "warrentyStatus": "OVER WARRENTY"
-      }
-    },
-    {
       "id": 3,
       "woNumber": "WO202201235607",
       "customer": {

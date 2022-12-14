@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
-import SearchBar from "./search";
+import SearchBar from "./SearchBar";
 import add from "./Icons/add.svg"
 
 const WorkOrderList = ({workorders}) => {
     return ( 
-        <div className="wo-list">
+        <div>
           <SearchBar />
           <Link to="/create">
-              <span className="buttons">
+              <span className="create-new-button">
                   <img src={add} alt="Add new" />
                   <div>Create</div>
               </span>

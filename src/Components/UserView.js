@@ -1,4 +1,4 @@
-import SearchBar from "./search";
+import SearchBar from "./SearchBar";
 import approveImg from "./Icons/approve.svg"
 import rejectImg from "./Icons/reject.svg"
 import contactImg from "./Icons/contact.svg"
@@ -26,7 +26,7 @@ const UserView = () => {
 
                     <div className="user-view-buttons-container">
                         <div id="user-decisions">
-                            <div id="user-approv" className="user-view-buttons">
+                            <div id="user-approve" className="user-view-buttons">
                                 <img src={approveImg} alt="Approve" />
                                 <div>Approve estimate</div>
                             </div>
