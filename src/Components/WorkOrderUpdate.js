@@ -34,7 +34,6 @@ const UpdateWorkOrder = (wo) => {
               warrentyStatus
             }
           }
-
           setIsPending(true);
 
           fetch('http://localhost:8000/workOrders', {
@@ -48,7 +47,6 @@ const UpdateWorkOrder = (wo) => {
             window.location.reload(true); //find a better method to reset the form
           });
     }
-
     return ( 
         <div>
             <form onSubmit={handleSubmit}>
@@ -109,7 +107,6 @@ const UpdateWorkOrder = (wo) => {
                         <select required
                             value={warrentyStatus}
                             onChange = {(e) => setWarrentyStatus(e.target.value)}>
-                                
                             <option value="UNDER WARRENTY">UNDER WARRENTY</option>
                             <option value="OVER WARRENTY">OVER WARRENTY</option>
                         </select>

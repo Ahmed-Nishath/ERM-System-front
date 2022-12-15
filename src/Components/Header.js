@@ -3,7 +3,7 @@ const Header = ({user, page}) => {
         <div className="header">
           <div id="user">{user}</div>
           <h2>{page}</h2>
-          <hr></hr>
+          <hr/>
       </div>
      );
 }

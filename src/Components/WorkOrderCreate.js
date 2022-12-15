@@ -21,7 +21,6 @@ const CreateWorkOrder = () => {
     const [warrentyStatus, setWarrentyStatus] = useState('UNDER WARRENTY');
 
     const [isPending, setIsPending] = useState(false);
-
     const history = useHistory();
     
     const handleSubmit = (e) => {
@@ -42,7 +41,6 @@ const CreateWorkOrder = () => {
               warrentyStatus
             }
           }
-
           setIsPending(true);
 
           fetch('http://localhost:8000/workOrders', {
@@ -52,14 +50,13 @@ const CreateWorkOrder = () => {
           }).then(() => {
             setIsPending(false);
             //history.go(-1); //go back one step
-            history.push('/');           
+            history.push('/workorders');           
             window.location.reload(true); //find a better method to reset the form
           });
     }
-
     return ( 
         <div>
-            <form onSubmit={handleSubmit}>
+            <form id="create-workorder-form" onSubmit={handleSubmit}>
                 <h2>Create New Work Order</h2>
                 <div className="create-form">
                     <div className="form-user-info">

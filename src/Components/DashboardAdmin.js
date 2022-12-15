@@ -19,7 +19,7 @@ const DashboardAdmin = () => {
             <h2 id="dashboard-heading">Dashboard</h2>
             <hr/>
             <div className="dashboard-tiles">
-                <Link to="/workOrders">
+                <Link to="/workorders">
                     <Tile name={"WorkOrders"} image={workorderImg}/>
                 </Link>
 

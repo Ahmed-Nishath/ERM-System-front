@@ -6,12 +6,12 @@ import contactImg from "./Icons/contact.svg"
 const UserView = () => {
     return ( 
         <div>
-            <h1>Black Eagle Electronic Services</h1>
-            <h2>Estimate Approval Form</h2>
-            <h3>Enter the Work order number</h3>
+            {/* <h1>PRO-TECH SERVICES</h1> */}
+            <h2 className="sub-heading">Estimate Approval Form</h2>
+            <h3 className="sub-heading">Enter the Work order number</h3>
             <SearchBar/>
 
-            <h2>WO202201026585</h2>
+            <h2 className="sub-heading">WO202201026585</h2>
                 <div className="user-view">
                     <div className="user-view-details-block">
                         <div><b>Name</b><br/>{"Ahmed Nishath"}</div>

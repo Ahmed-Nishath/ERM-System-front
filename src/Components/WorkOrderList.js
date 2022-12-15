@@ -19,6 +19,7 @@ const WorkOrderList = ({workorders}) => {
           <div>Customer</div>
           <div>Contact</div>
         </div>
+        <div className="wo-list-container">
         {
           workorders.map((wo) => {
             return (
@@ -33,6 +34,7 @@ const WorkOrderList = ({workorders}) => {
             );
           })
         }
+        </div>
         </div>
      );
 }

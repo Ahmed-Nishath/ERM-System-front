@@ -1,3 +1,5 @@
+import Popup from "./Popup";
+
 const Login = () => {
     return ( 
         <div>
@@ -15,7 +17,12 @@ const Login = () => {
                     </div>
                     <button>Login</button>
                 </form>
-            </div>
+            </div>   
+            <Popup 
+            message="Please contact the admin to reset the login 
+                    credentials or gethelp with any login issues." 
+            link="Forgot login credentials!." 
+            linkClass="forgot-password"/>
         </div>
      );
 }

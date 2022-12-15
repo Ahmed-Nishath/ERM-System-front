@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import useFetch from "./FunctionUseFetch";
 import "./XStyles.css";
+import logoImg from "./Components/Icons/logo.svg";
 
 import DashboardAdmin from "./Components/DashboardAdmin";
 import WorkOrderCreate from "./Components/WorkOrderCreate";
@@ -12,11 +13,11 @@ import UserView from "./Components/UserView";
 import Login from "./Components/Login";
 import SidePanel from "./Components/SidePanel";
 
+
 function App() {
   //npx json-server --watch data/db.json --port 8000
   const { data, isPending, error } = useFetch("http://localhost:8000/workOrders");
 
-  
   return (
     <div className="App">
       <Router>
@@ -26,7 +27,10 @@ function App() {
           </div>
         
           <div className="content-container">
-            <h1>BLACK EAGLE SERVICES</h1>
+            <div className="company-name">
+              <img src={logoImg} alt="Logo" />
+              <h1>PRO-TECH SERVICES</h1>
+            </div>
             <Switch>
               <Route exact path="/">
                 <DashboardAdmin/>
@@ -35,7 +39,7 @@ function App() {
                 <WorkOrderCreate />
               </Route>
 
-              <Route exact path="/workOrders">
+              <Route exact path="/workorders">
                 <div>
                   <Header user="Admin" page="Work Orders"/>
                   {error && <div id="error">{error}</div>}

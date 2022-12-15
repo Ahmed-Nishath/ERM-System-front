@@ -6,7 +6,6 @@ import editIcon from "./Icons/edit.svg"
 const WorkOrderDetails = () => {
   const { id } = useParams();
   const {data: wo,error,isPending,} = useFetch("http://localhost:8000/workOrders/" + id);
-
   const history = useHistory();
 
   const handleClick = () => {
@@ -17,7 +16,6 @@ const WorkOrderDetails = () => {
       window.location.reload(true); //find a better method to reset the form
     })
   }
-
   return (
     <div>
       {isPending && <div className="loading">Loading...</div>}
@@ -64,6 +62,7 @@ const WorkOrderDetails = () => {
             <div className="comment">
                 <div>Add comment here...</div>
                 <textarea></textarea>
+                <div id="add-comment-button"><button>Add</button></div>
             </div>
           </div>
         </div>

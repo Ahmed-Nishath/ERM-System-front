@@ -1,5 +1,6 @@
 *{
   box-sizing: border-box;
+  margin: 0px;
 }
 
 body {
@@ -8,13 +9,24 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(230, 230, 230);
+  background-color: rgb(241, 241, 241);
 }
 
 h1{
-  margin-left: 40px;
+  margin-left: 20px;
   font-size: 40px;
-  color: rgb(87, 4, 4);
+  color: #001214;
+  text-shadow: 4px 4px 8px rgb(68, 68, 68);
+}
+
+.company-name{
+  display: flex;
+}
+
+.company-name img{
+  margin-top: 3px;
+  width: 50px;
+  height: 50px;
 }
 
 h2{
@@ -39,6 +51,20 @@ hr{
   align-items: center;
 }
 
+::-webkit-scrollbar{
+  width: 10px;
+}
+
+::-webkit-scrollbar-track{
+  background-color: rgb(241, 241, 241);
+}
+
+::-webkit-scrollbar-thumb{
+  background: rgba(33, 33, 33, 0.535);
+  border-radius: 30px;
+}
+
+
 /* _____________________________________________________________ */
 /* App */
 .main-container{
@@ -47,10 +73,10 @@ hr{
 }
 
 .side-panel{
-  background-color: rgb(0, 31, 51);
-  width: 140px;
+  background-color: rgb(0, 21, 28);
+  width: 150px;
   height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 #user{
@@ -68,6 +94,10 @@ hr{
 
 .content-container{
   width: 100%;
+  height: 100vh;
+  padding-top: 40px;
+  padding-left: 40px;
+  overflow-y: scroll;
 }
 
 #error{
@@ -91,7 +121,9 @@ hr{
 /* Admin Dashboard */
 #dashboard-heading{
   text-align: left;
-  margin-left: 68px;
+  margin-left: 30px;
+  margin-top: 30px;
+  margin-bottom: 45px;
   font-size: 35px;
   color: rgb(30, 30, 30);
 }
@@ -100,6 +132,7 @@ hr{
   display:flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-right: 50px;
 }
 
 .dashboard-tiles > a{
@@ -109,6 +142,12 @@ hr{
 
 /* _____________________________________________________________ */
 /* Create Workorder , Update*/
+#create-workorder-form{
+  margin-top: 50px;
+  height: 70vh;
+  overflow-y: scroll;
+}
+
 .create-form{
   display:flex;
   justify-content: space-around;
@@ -151,11 +190,28 @@ select, option{
   width: 170px;
 }
 
+b{
+  font-weight: 550;
+}
+
+select{
+  font-size: 17px;
+  border: 0px;
+  border-radius: 6px;
+  height: 39px;
+  padding-left: 20px;
+}
+
 
 /* _____________________________________________________________ */
 /* Header */
+.header{
+  margin-top: 20px;
+}
+
 .header > h2{
   margin-left: 100px;
+  margin-bottom: 20px;
 }
 
 
@@ -209,6 +265,22 @@ select, option{
   box-shadow: 1px 2px 7px rgb(68, 68, 68);
 }
 
+.forgot-password {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  margin: 10px auto 0;
+  font-size: 15px;
+  color: rgb(7, 7, 121);
+  text-decoration: underline;
+}
+
+.forgot-password:hover {
+  cursor: pointer;
+  text-decoration: none;
+  color: rgb(0, 149, 159);
+}
+
 
 /* _____________________________________________________________ */
 /* Not Found */
@@ -221,6 +293,73 @@ select, option{
 .not-found a:hover{
   text-decoration: none;
   color: rgb(1, 31, 79);
+}
+
+
+/* _____________________________________________________________ */
+/* PanelTile */
+#side-panel-block{
+  display: flex;
+  justify-content: center;
+}
+
+
+/* _____________________________________________________________ */
+/* Popup */
+body.active-modal {
+  overflow-y: hidden;
+}
+
+.modal, .overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.overlay {
+  background: rgba(58, 58, 58, 0.89);
+}
+.modal-content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #f1f1f1;
+  padding: 14px 28px;
+  border-radius: 3px;
+  max-width: 450px;
+  min-width: 300px;
+  border-radius: 30px;
+  padding-block: 28px;
+}
+
+.close-modal {
+  display: flex;
+  margin: auto;
+  width: 75px;
+  height: 25px;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  justify-content: center;
+  background-color: gray;
+  border-radius: 30px;
+  box-shadow: 2px 2px 4px rgb(68, 68, 68);
+  margin-top: 20px;
+}
+
+.close-modal:hover {
+  background-color: rgb(0, 76, 120);
+  color: white;
+}
+
+.close-modal > div{
+  margin-top: 3px;
 }
 
 
@@ -262,14 +401,9 @@ select, option{
 
 /* _____________________________________________________________ */
 /* Side Panel */
-#side-panel-block{
-  display: flex;
-  justify-content: center;
-}
-
 .side-panel-main-container img{
-  width: 60px;
-  height: 60px;
+  width: 45px;
+  height: 45px;
   margin-top: 40px;
 }
 
@@ -286,7 +420,7 @@ select, option{
   border-radius: 25px;
   margin: 20px;
   background: rgb(94,94,94);
-  background: linear-gradient(0deg, rgb(0, 47, 17) 0%, rgb(0, 103, 19) 49%, rgb(0, 157, 5) 100%);
+  background: linear-gradient(0deg, rgb(3, 0, 40) 0%, rgb(0, 64, 109) 49%, rgb(3, 150, 208) 100%);
   }
 
 .tile-image{
@@ -310,9 +444,10 @@ select, option{
 }
 
 .tile:hover{
-  background: linear-gradient(0deg, rgb(2, 35, 93) 0%, rgb(14, 63, 197) 49%, rgb(72, 149, 250) 100%);
+  /* background: linear-gradient(0deg, rgb(0, 40, 63) 0%, rgb(0, 64, 91) 49%, rgb(0, 195, 254) 100%); */
+  background: black;
   box-shadow: 3px 3px 7px rgb(74, 74, 74);
-  transform:scale(1.02);
+  transform:scale(1.05);
 }
 
 .tile-name > h4{
@@ -323,6 +458,9 @@ select, option{
   text-align: center;
 }
 
+.tile-name:hover{
+  cursor: pointer;
+}
 
 /* _____________________________________________________________ */
 /* User View */
@@ -399,6 +537,11 @@ select, option{
   font-size: 18px;
   font-weight: 500;
   color: white;
+}
+
+.sub-heading{
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 
@@ -528,18 +671,27 @@ textarea:focus, input:focus{
   outline: none;
 }
 
-b{
-  font-weight: 550;
+#add-comment-button button{
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  background-color: gray;
+  border: none;
+  outline: none;
+  border-radius: 30px;
+  width: 150px;
+  height: 30px;
 }
 
-select{
-  font-size: 17px;
-  border: 0px;
-  border-radius: 6px;
-  height: 39px;
-  padding-left: 20px;
+#add-comment-button{
+  margin-top: 10px;
+  margin-left: 25px;
 }
 
+#add-comment-button button:hover{
+  background-color: rgb(0, 0, 76);
+  box-shadow: 1px 2px 7px rgb(36, 35, 35);
+}
 
 /* _____________________________________________________________ */
 /* Work Order List */
@@ -637,16 +789,28 @@ select{
   text-overflow:ellipsis;
 }
 
+.wo-list-container{
+  height: 50vh;
+  overflow-y: scroll;
+}
+
 .wo-previwe > div{
   overflow:hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.wo-previwe:hover{
-  box-shadow: 1px 3px 7px rgba(1, 120, 133, 0.439);
-  background-color: rgb(225, 225, 225);
-}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -675,7 +839,6 @@ select{
 } */
 
 
-/*##################################################*/
 /* @media (max-width:885px){
   .search{
     margin-right: 10px;
@@ -697,7 +860,6 @@ select{
 } */
 
 
-/*##################################################*/
 /* @media (max-width:780px){
   body{
     margin: 0px;
