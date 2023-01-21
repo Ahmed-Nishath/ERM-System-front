@@ -11,6 +11,7 @@ const WorkOrderUpdate = (props) => {
     // var yyyy = String(today.getFullYear()).padStart(2,'0');
     // const WOnumber = "WO"+yyyy+mm+dd+""+rand;
 
+    const [woNumber, setWoNumber] = useState('');
     const [cname, setName] = useState('');
     const [nic, setNIC] = useState('');
     const [address, setAddress] = useState('');
@@ -19,13 +20,14 @@ const WorkOrderUpdate = (props) => {
     const [productName, setProductName] = useState('');
     const [serialNumber, setSerialNumber] = useState('');
     const [saleDate, setSaleDate] = useState('');
-    // const [warrentyStatus, setWarrentyStatus] = useState('UNDER WARRENTY');
+    const [warrentyStatus, setWarrentyStatus] = useState('UNDER WARRENTY');
     const [errorMessage, setErrorMessage] = useState('');
     
     const {id} = useParams();
 
     useEffect(() =>{
         WorkOrderService.getWorkOrderById(id).then(res =>{
+            setWoNumber(res.data.woNumber)
             setName(res.data.cname)
             setNIC(res.data.nic)
             setAddress(res.data.address)
@@ -34,6 +36,7 @@ const WorkOrderUpdate = (props) => {
             setProductName(res.data.productName)
             setSerialNumber(res.data.serialNumber)
             setSaleDate(res.data.saleDate)
+            setWarrentyStatus(res.data.warrentyStatus)
         }).catch(error =>{
             console.log(error); 
         });
@@ -56,6 +59,7 @@ const WorkOrderUpdate = (props) => {
         let workorder = {productName:productName,
                         serialNumber:serialNumber,
                         saleDate:saleDate,
+                        warrentyStatus:warrentyStatus,
                         nic:nic,
                         cname:cname, 
                         address:address,
@@ -78,6 +82,7 @@ const WorkOrderUpdate = (props) => {
         <div>
             <form id="create-workorder-form">
                 <h2>Update Work Order</h2>
+                <h4 id="update-wo-number">{woNumber}</h4>
                 <div className="create-form">
                     <div className="form-user-info">
                         <h4>User Information</h4>
@@ -131,21 +136,23 @@ const WorkOrderUpdate = (props) => {
                             onChange = {(e) => setSaleDate(e.target.value)}
                         /><br/>
 
-                        {/* <label>Warrenty Status</label><br/>
+                        <label>Warrenty Status</label><br/>
                         <select required
                             value={warrentyStatus}
                             onChange = {(e) => setWarrentyStatus(e.target.value)}>
                                 
                             <option value="UNDER WARRENTY">UNDER WARRENTY</option>
                             <option value="OVER WARRENTY">OVER WARRENTY</option>
-                        </select> */}
+                        </select>
                     </div>
                 </div>    
                 <div className="errorMessage">
                     {errorMessage}
                 </div>  
-                <button onClick={updateWorkorder} className="create-wo-form-button">Update</button>
-                <button className="create-wo-form-button" onClick={cancel} >Cancel</button>
+                <div id="form-buttons">
+                    <button onClick={updateWorkorder} className="create-wo-form-button">Update</button>
+                    <button className="create-wo-form-button" onClick={cancel} >Cancel</button>
+                </div>
             </form>
         </div>     
      );

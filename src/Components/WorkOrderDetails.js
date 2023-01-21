@@ -28,7 +28,7 @@ const deleteWorkOrder = (id) => {
   return (
     <div>
         <div>
-          <div id="wo-detail-heading">Work Order Information</div>
+          <div id="wo-detail-heading">Work Order Information - {wo.woNumber}</div>
           <div id="actions">
             <Link id="update-button-container" to={`/update-workorder/${wo.id}`}>
             <div id="update-button">
@@ -62,7 +62,7 @@ const deleteWorkOrder = (id) => {
                         <div><b>Product Name</b> : {wo.productName} <br/> </div>
                         <div><b>Serial Number</b> : {wo.serialNumber} <br/> </div>
                         <div><b>Date of Sale</b> : {wo.saleDate} <br/> </div>
-                        {/* <div><b>Warrenty Status</b> : {wo.product.warrentyStatus} </div> */}
+                        <div><b>Warrenty Status</b> : {wo.warrentyStatus} </div>
                       </div>
                 </div>
               </div>  

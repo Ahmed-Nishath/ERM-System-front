@@ -9,10 +9,13 @@ import CreateNew from "./CreateNew";
 function WorkOrderList() {
 
   const [workorders, setWorkorders] = useState([]);
+  const [isPending, setIsPending] = useState(false);
 
   const getAllWorkOrder = () => {
+    setIsPending(true)
     WorkOrderService.getWorkOrders().then((res)=>{
       setWorkorders(res.data);
+      setIsPending(false)
     }).catch(error => { 
       console.log(error);  
     });
@@ -37,20 +40,21 @@ function WorkOrderList() {
         <div>Contact</div>
       </div>
       <div className="wo-list-container">
-      {
-        workorders.map((wo) => {
-          return ( 
-            <Link id="wo-link" to={`/workorders/${wo.id}`} key={wo.id}> 
-              <div className="wo-previwe" >
-                <div> {wo.productName} </div>
-                <div> {wo.nic} </div>
-                <div> {wo.cname} </div>
-                <div> {wo.phone} </div>
-              </div>
-            </Link>
-          );
-        })
-      }
+        {isPending && <div className='loading'>Loading...</div>}
+        {
+          workorders.map((wo) => {
+            return ( 
+              <Link id="wo-link" to={`/workorders/${wo.id}`} key={wo.id}> 
+                <div className="wo-previwe" >
+                  <div> {wo.woNumber} </div>
+                  <div> {wo.productName} </div>
+                  <div> {wo.cname} </div>
+                  <div> {wo.phone} </div>
+                </div>
+              </Link>
+            );
+          })
+        }
       </div>
     </div>
   )

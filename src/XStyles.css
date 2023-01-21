@@ -168,6 +168,13 @@ hr{
   box-shadow: 1px 1px 3px rgba(114, 114, 114, 0.222);
 }
 
+#update-wo-number{
+  display: flex;
+  justify-content: center;
+  margin-block: 20px;
+  font-size: 20px;
+}
+
 .form-user-info, .form-product-info{
   margin-inline: 30px;
 }
@@ -195,11 +202,17 @@ b{
 }
 
 select{
-  font-size: 17px;
+  font-size: 15px;
   border: 0px;
   border-radius: 6px;
   height: 39px;
-  padding-left: 20px;
+  width: 250px;
+}
+
+#form-buttons{
+  display: flex;
+  width: 32%;
+  margin-inline:auto;
 }
 
 .errorMessage{
@@ -256,7 +269,7 @@ select{
   border-radius: 12px;
 }
 
-.login-box button, form > button{
+.login-box button, form button{
   background-color: rgb(116, 116, 116);
   width: 140px;
   height: 40px;
@@ -268,7 +281,7 @@ select{
   font-size: 18px;
 }
 
-.login-box button:hover, form > button:hover{
+.login-box button:hover, form button:hover{
   background-color: rgb(0, 104, 113);
   color: white;
   box-shadow: 1px 2px 7px rgb(68, 68, 68);

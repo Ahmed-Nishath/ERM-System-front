@@ -3,13 +3,13 @@ import {withRouter } from "react-router-dom";
 import WorkOrderService from "../WorkOrderService";
 
 const CreateWorkOrder = (props) => {
-    // const rand = Math.floor(1000 + Math.random() * 9000);
+    const rand = Math.floor(1000 + Math.random() * 9000);
 
-    // var today = new Date();
-    // var dd = String(today.getDate()).padStart(2,'0');
-    // var mm = String(today.getMonth()+1).padStart(2,'0'); //Januaru=0
-    // var yyyy = String(today.getFullYear()).padStart(2,'0');
-    // const WOnumber = "WO"+yyyy+mm+dd+""+rand;
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2,'0');
+    var mm = String(today.getMonth()+1).padStart(2,'0'); //Januaru=0
+    var yyyy = String(today.getFullYear()).padStart(2,'0');
+    const WOnumber = "WO"+yyyy+mm+dd+""+rand;
 
     const [cname, setName] = useState('');
     const [nic, setNIC] = useState('');
@@ -19,7 +19,7 @@ const CreateWorkOrder = (props) => {
     const [productName, setProductName] = useState('');
     const [serialNumber, setSerialNumber] = useState('');
     const [saleDate, setSaleDate] = useState('');
-    // const [warrentyStatus, setWarrentyStatus] = useState('UNDER WARRENTY');
+    const [warrentyStatus, setWarrentyStatus] = useState('UNDER WARRENTY');
     const [errorMessage, setErrorMessage] = useState('');
     
     const saveWorkorder = (e) =>{
@@ -36,9 +36,11 @@ const CreateWorkOrder = (props) => {
             setErrorMessage(''); 
         }
 
-        let workorder = {productName:productName,
+        let workorder = {woNumber:WOnumber,
+                        productName:productName,
                         serialNumber:serialNumber,
                         saleDate:saleDate,
+                        warrentyStatus:warrentyStatus,
                         nic:nic,
                         cname:cname, 
                         address:address,
@@ -114,21 +116,23 @@ const CreateWorkOrder = (props) => {
                             onChange = {(e) => setSaleDate(e.target.value)}
                         /><br/>
 
-                        {/* <label>Warrenty Status</label><br/>
+                        <label>Warrenty Status</label><br/>
                         <select required
                             value={warrentyStatus}
                             onChange = {(e) => setWarrentyStatus(e.target.value)}>
                                 
                             <option value="UNDER WARRENTY">UNDER WARRENTY</option>
                             <option value="OVER WARRENTY">OVER WARRENTY</option>
-                        </select> */}
+                        </select>
                     </div>
                 </div>    
                 <div className="errorMessage">
                     {errorMessage}
                 </div>  
-                <button onClick={saveWorkorder} className="create-wo-form-button">Create</button>
-                <button className="create-wo-form-button" onClick={cancel} >Cancel</button>
+                <div id="form-buttons">
+                    <button onClick={saveWorkorder} className="create-wo-form-button">Create</button>
+                    <button className="create-wo-form-button" onClick={cancel} >Cancel</button>
+                </div>
             </form>
         </div>    
      );
