@@ -202,6 +202,11 @@ select{
   padding-left: 20px;
 }
 
+.errorMessage{
+  text-align: center;
+  color: red;
+}
+
 
 /* _____________________________________________________________ */
 /* Header */
@@ -217,6 +222,10 @@ select{
 
 /* _____________________________________________________________ */
 /* Login */
+#main-login-container hr{
+  margin-top: 40px;
+}
+
 .login-box{
   width: 320px;
   height: 320px;
@@ -225,7 +234,7 @@ select{
   margin: auto;
   border-radius: 15px;
   box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.588);
-  margin-top: 90px;
+  margin-top: 70px;
 }
 
 .login-box-label{
@@ -273,6 +282,7 @@ select{
   font-size: 15px;
   color: rgb(7, 7, 121);
   text-decoration: underline;
+  width: 220px;
 }
 
 .forgot-password:hover {
@@ -411,6 +421,9 @@ body.active-modal {
   transform: scale(1.2);
 }
 
+.side-panel-main-container{
+  margin-bottom: 30px;
+}
 
 /* _____________________________________________________________ */
 /* Tile */
@@ -464,10 +477,15 @@ body.active-modal {
 
 /* _____________________________________________________________ */
 /* User View */
+#heading-user-view{
+  margin-top: 50px;
+}
+
 .user-view{
-  display: flex;
+  display: flex; 
   justify-content: space-between;
-  margin-inline: 80px;
+  margin-top: 40px;
+  margin-inline: 50px;
 }
 
 .user-view-details-block, .user-view-cost-block{
@@ -515,15 +533,15 @@ body.active-modal {
 }
 
 #user-approve:hover{
-  background-color: rgb(4, 108, 0);
+  background-color: rgb(3, 78, 1);
 }
 
 #user-reject:hover{
-  background-color: rgb(108, 0, 0);
+  background-color: rgb(88, 0, 0);
 }
 
 #user-contact:hover{
-  background-color: rgb(9, 0, 108);
+  background-color: rgb(8, 1, 88);
 }
 
 .user-view-buttons > img{
@@ -541,7 +559,7 @@ body.active-modal {
 
 .sub-heading{
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 
@@ -565,6 +583,10 @@ body.active-modal {
   border: none;
   outline: none;
   color: rgb(33, 32, 32);
+}
+
+#update-button-container{
+  text-decoration: none;
 }
 
 #delete-button, #update-button{
@@ -646,6 +668,7 @@ p ~ hr{
   font-weight: bold;
   color: rgb(77, 76, 76);
   margin-bottom: 30px;
+  margin-top: 20px;
 }
 
 .comment{
@@ -803,6 +826,9 @@ textarea:focus, input:focus{
 
 
 
+.test{
+  font-size: 50px;
+}
 
 
 
@@ -817,6 +843,7 @@ textarea:focus, input:focus{
 
 
 
+/*DO FULL MOBILE RESPONSIVENESS TO USER VIEW*/
 
 
 

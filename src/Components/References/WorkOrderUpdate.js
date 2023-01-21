@@ -1,72 +1,61 @@
 import { useState } from "react";
-import {withRouter } from "react-router-dom";
-import WorkOrderService from "../WorkOrderService";
+import { useHistory } from "react-router-dom";
 
-const CreateWorkOrder = (props) => {
-    // const rand = Math.floor(1000 + Math.random() * 9000);
+const WorkOrderUpdate = (wo) => {
+    const [name, setName] = useState(wo.customer.name);
+    const [nic, setNIC] = useState(wo.customer.nic);
+    const [address, setAddress] = useState(wo.customer.address);
+    const [contact, setContact] = useState(wo.customer.contact);
+    const [email, setEmail] = useState(wo.customer.email);
+    const [productName, setProductName] = useState(wo.product.productName);
+    const [serialNumber, setSerialNumber] = useState(wo.product.serialNumber);
+    const [saleDate, setSaleDate] = useState(wo.product.saleDate);
+    const [warrentyStatus, setWarrentyStatus] = useState(wo.product.warrentyStatus);
 
-    // var today = new Date();
-    // var dd = String(today.getDate()).padStart(2,'0');
-    // var mm = String(today.getMonth()+1).padStart(2,'0'); //Januaru=0
-    // var yyyy = String(today.getFullYear()).padStart(2,'0');
-    // const WOnumber = "WO"+yyyy+mm+dd+""+rand;
+    const [isPending, setIsPending] = useState(false);
 
-    const [cname, setName] = useState('');
-    const [nic, setNIC] = useState('');
-    const [address, setAddress] = useState('');
-    const [phone, setContact] = useState('');
-    const [email, setEmail] = useState('');
-    const [productName, setProductName] = useState('');
-    const [serialNumber, setSerialNumber] = useState('');
-    const [saleDate, setSaleDate] = useState('');
-    // const [warrentyStatus, setWarrentyStatus] = useState('UNDER WARRENTY');
-    const [errorMessage, setErrorMessage] = useState('');
+    const history = useHistory();
     
-    const saveWorkorder = (e) =>{
-        e.preventDefault(); 
-        
-        if(cname === '' || nic=== '' || 
-           phone === '' || address === '' || 
-           email === '' || productName === ''||
-           serialNumber === '' || saleDate === ''){
-            setErrorMessage("Please fill all the feilds");
-            return;
-        }
-        else{
-            setErrorMessage(''); 
-        }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const workorder = {
+            "woNumber": wo.woNumber,
+            "customer": {
+              name,
+              nic,
+              address,
+              contact,
+              email
+            },
+            "product": {
+              productName,
+              serialNumber,
+              saleDate,
+              warrentyStatus
+            }
+          }
+          setIsPending(true);
 
-        let workorder = {productName:productName,
-                        serialNumber:serialNumber,
-                        saleDate:saleDate,
-                        nic:nic,
-                        cname:cname, 
-                        address:address,
-                        email:email,
-                        phone:phone,
-                        }
-        
-        WorkOrderService.createWorkOrder(workorder).then(res =>{
-            props.history.push("/workorders");
-        }).catch(error =>{
-            console.log(error);
-        });
+          fetch('http://localhost:8000/workOrders', {
+            method: 'PUT',
+            headers: {"Content-Type": "application/json" }, 
+            body: JSON.stringify(workorder)
+          }).then(() => {
+            setIsPending(false);
+            //history.go(-1); //go back one step
+            history.push('/');           
+            window.location.reload(true); //find a better method to reset the form
+          });
     }
-
-    const cancel = () =>{
-        props.history.push("/workorders");
-    } 
-    
     return ( 
         <div>
-            <form id="create-workorder-form">
-                <h2>Create New Work Order</h2>
+            <form onSubmit={handleSubmit}>
                 <div className="create-form">
                     <div className="form-user-info">
                         <h4>User Information</h4>
                         <label>Customer Name: </label><br/>
                         <input type="text" required 
-                            value={cname}
+                            value={name}
                             onChange = {(e) => setName(e.target.value)}
                         /><br/>
 
@@ -84,7 +73,7 @@ const CreateWorkOrder = (props) => {
                         
                         <label>Contact number: </label><br/>
                         <input type="text" required
-                            value={phone}
+                            value={contact}
                             onChange = {(e) => setContact(e.target.value)}
                         /><br/>
 
@@ -114,24 +103,20 @@ const CreateWorkOrder = (props) => {
                             onChange = {(e) => setSaleDate(e.target.value)}
                         /><br/>
 
-                        {/* <label>Warrenty Status</label><br/>
+                        <label>Warrenty Status</label><br/>
                         <select required
                             value={warrentyStatus}
                             onChange = {(e) => setWarrentyStatus(e.target.value)}>
-                                
                             <option value="UNDER WARRENTY">UNDER WARRENTY</option>
                             <option value="OVER WARRENTY">OVER WARRENTY</option>
-                        </select> */}
+                        </select>
                     </div>
                 </div>    
-                <div className="errorMessage">
-                    {errorMessage}
-                </div>  
-                <button onClick={saveWorkorder} className="create-wo-form-button">Create</button>
-                <button className="create-wo-form-button" onClick={cancel} >Cancel</button>
+                { !isPending && <button>Update</button> }
+                { isPending && <button disabled>Please wait</button> }
             </form>
         </div>    
      );
 }
  
-export default withRouter(CreateWorkOrder);
+export default WorkOrderUpdate;

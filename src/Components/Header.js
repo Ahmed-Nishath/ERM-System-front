@@ -8,4 +8,4 @@ const Header = ({user, page}) => {
      );
 }
  
-export default Header;
+export default Header; 

@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import useFetch from "./FunctionUseFetch";
+
 import "./XStyles.css";
 import logoImg from "./Components/Icons/logo.svg";
 
@@ -10,20 +10,16 @@ import WorkOrderDetails from "./Components/WorkOrderDetails";
 import NotFound from "./Components/NotFound";
 import Header from "./Components/Header";
 import UserView from "./Components/UserView";
-import Login from "./Components/Login";
 import SidePanel from "./Components/SidePanel";
-
+import WorkOrderUpdate from "./Components/WorkOrderUpdate";
 
 function App() {
-  //npx json-server --watch data/db.json --port 8000
-  const { data, isPending, error } = useFetch("http://localhost:8000/workOrders");
-
   return (
     <div className="App">
       <Router>
         <div className="main-container">
           <div className="side-panel">
-            <SidePanel />
+            <SidePanel /*cls={el}*//>
           </div>
         
           <div className="content-container">
@@ -31,39 +27,40 @@ function App() {
               <img src={logoImg} alt="Logo" />
               <h1>PRO-TECH SERVICES</h1>
             </div>
+
             <Switch>
               <Route exact path="/">
                 <DashboardAdmin/>
-              </Route>
-              <Route exact path="/create">
-                <WorkOrderCreate />
               </Route>
 
               <Route exact path="/workorders">
                 <div>
                   <Header user="Admin" page="Work Orders"/>
-                  {error && <div id="error">{error}</div>}
-                  {isPending && <div className="loading">Loading...</div>}
-                  {data && <WorkOrderList workorders={data} />}
+                  
+                  <WorkOrderList />
                 </div>
-              </Route>
+              </Route> 
 
-              <Route exact path="/workorder/:id">
+              <Route exact path="/workorders/:id">
                   <Header user="Admin" page="Work Orders"/>
                   <WorkOrderDetails />
               </Route>
               
-              <Route exact path="/technician">
+              <Route exact path="/user-view">
                   <UserView />
               </Route>
 
-              <Route exact path="/delivery">
-                  <Login />
+              <Route exact path="/create-workorder">
+                  <WorkOrderCreate/> 
+              </Route>
+
+              <Route exact path="/update-workorder/:id">
+                  <WorkOrderUpdate/>
               </Route>
 
               <Route path="*">
                   <NotFound />
-              </Route>
+              </Route> 
             </Switch>
           </div>
         </div>

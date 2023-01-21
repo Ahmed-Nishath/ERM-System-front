@@ -2,8 +2,8 @@ import Popup from "./Popup";
 
 const Login = () => {
     return ( 
-        <div>
-            <hr />
+        <div id="main-login-container">
+            <hr/>
             <div className="login-box">
                 <form >
                     <div className="login-box-label">
@@ -20,7 +20,7 @@ const Login = () => {
             </div>   
             <Popup 
             message="Please contact the admin to reset the login 
-                    credentials or gethelp with any login issues." 
+                    credentials or get help with any login issues." 
             link="Forgot login credentials!." 
             linkClass="forgot-password"/>
         </div>
