@@ -3,14 +3,6 @@ import { useEffect, useState } from "react";
 import WorkOrderService from "../WorkOrderService";
 
 const WorkOrderUpdate = (props) => {
-    // const rand = Math.floor(1000 + Math.random() * 9000);
-
-    // var today = new Date();
-    // var dd = String(today.getDate()).padStart(2,'0');
-    // var mm = String(today.getMonth()+1).padStart(2,'0'); //Januaru=0
-    // var yyyy = String(today.getFullYear()).padStart(2,'0');
-    // const WOnumber = "WO"+yyyy+mm+dd+""+rand;
-
     const [woNumber, setWoNumber] = useState('');
     const [cname, setName] = useState('');
     const [nic, setNIC] = useState('');
@@ -19,9 +11,10 @@ const WorkOrderUpdate = (props) => {
     const [email, setEmail] = useState('');
     const [productName, setProductName] = useState('');
     const [serialNumber, setSerialNumber] = useState('');
-    const [saleDate, setSaleDate] = useState('');
+    const [saleDate, setSaleDate] = useState(new Date());
+    const [assignTo, setAssignTo] = useState('- Choose technician -');
     const [warrentyStatus, setWarrentyStatus] = useState('UNDER WARRENTY');
-    const [errorMessage, setErrorMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('no-error-class');
     
     const {id} = useParams();
 
@@ -37,6 +30,7 @@ const WorkOrderUpdate = (props) => {
             setSerialNumber(res.data.serialNumber)
             setSaleDate(res.data.saleDate)
             setWarrentyStatus(res.data.warrentyStatus)
+            setAssignTo(res.data.assignTo.toUpperCase())
         }).catch(error =>{
             console.log(error); 
         });
@@ -48,18 +42,20 @@ const WorkOrderUpdate = (props) => {
         if(cname === '' || nic=== '' || 
            phone === '' || address === '' || 
            email === '' || productName === ''||
-           serialNumber === '' || saleDate === ''){
-            setErrorMessage("Please fill all the feilds");
+           serialNumber === '' || saleDate === '' || 
+           assignTo === '' || assignTo === '- Choose technician -'){
+            setErrorMessage("error-class");
             return;
         }
         else{
-            setErrorMessage(''); 
+            setErrorMessage('no-error-class'); 
         }
 
         let workorder = {productName:productName,
                         serialNumber:serialNumber,
                         saleDate:saleDate,
                         warrentyStatus:warrentyStatus,
+                        assignTo:assignTo,
                         nic:nic,
                         cname:cname, 
                         address:address,
@@ -83,7 +79,7 @@ const WorkOrderUpdate = (props) => {
             <form id="create-workorder-form">
                 <h2>Update Work Order</h2>
                 <h4 id="update-wo-number">{woNumber}</h4>
-                <div className="create-form">
+                <div className="create-workorder-form-container">
                     <div className="form-user-info">
                         <h4>User Information</h4>
                         <label>Customer Name: </label><br/>
@@ -131,7 +127,7 @@ const WorkOrderUpdate = (props) => {
                         /><br/>
                         
                         <label>Date of sale: </label><br/>
-                        <input type="text" required
+                        <input type="date" required className="date-picker"
                             value={saleDate}
                             onChange = {(e) => setSaleDate(e.target.value)}
                         /><br/>
@@ -144,12 +140,26 @@ const WorkOrderUpdate = (props) => {
                             <option value="UNDER WARRENTY">UNDER WARRENTY</option>
                             <option value="OVER WARRENTY">OVER WARRENTY</option>
                         </select>
+
+                        <label>Assign to</label>
+                        <select required
+                            value={assignTo}
+                            onChange = {(e) => setAssignTo(e.target.value)}>
+                            <option value="- Choose technician -">- Choose technician -</option> 
+                            <option value="AUDIO">AUDIO</option>
+                            <option value="COMPUTERS">COMPUTERS</option>
+                            <option value="GENERATORS">GENERATORS</option>
+                            <option value="REFREGIRATOR">REFREGIRATOR</option>
+                            <option value="SEWING MACHINE">SEWING MACHINE</option>
+                            <option value="TELEVISION">TELEVISION</option>
+                            <option value="WASHING MACHINE">WASHING MACHINE</option>
+                        </select>
                     </div>
                 </div>    
-                <div className="errorMessage">
-                    {errorMessage}
+                <div  className={errorMessage}>
+                    Please fill all the feilds with correct information
                 </div>  
-                <div id="form-buttons">
+                <div id="form-buttons-workorder">
                     <button onClick={updateWorkorder} className="create-wo-form-button">Update</button>
                     <button className="create-wo-form-button" onClick={cancel} >Cancel</button>
                 </div>

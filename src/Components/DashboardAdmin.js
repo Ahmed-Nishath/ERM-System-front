@@ -34,10 +34,19 @@ const DashboardAdmin = () => {
                 <Link to="/payments">
                     <Tile name={"Payments"} image={paymentImg}/>
                 </Link>
-                
-                <Tile name={"Parts"} image={partsImg}/>
-                <Tile name={"Bussiness"} image={statImg}/>
-                <Tile name={"Stocks"} image={stockImg}/>
+
+                <Link to="/create-technician">
+                    <Tile name={"Technicians"} image={partsImg}/>
+                </Link>
+
+                <Link to="/transfer-workorder">
+                    <Tile name={"Transfer"} image={statImg}/>
+                </Link>
+
+                <Link to="/comment">
+                    <Tile name={"Stocks"} image={stockImg}/>
+                </Link>
+
                 <Tile name={"Settings"} image={settingsImg}/>
                 <Tile name={"Reports"} image={reportImg}/>
                 <Tile name={"Clients"} image={clientsImg}/>

@@ -6,7 +6,7 @@ import editIcon from "./Icons/edit.svg"
 import { Link } from "react-router-dom";
 
   const WorkOrderDetails = (props) => {
-  const { id } = useParams();
+  const {id} = useParams();
   const [wo, setWo] = useState([]);
 
   useEffect(() =>{
@@ -17,13 +17,22 @@ import { Link } from "react-router-dom";
     })
   },[])
 
-const deleteWorkOrder = (id) => {
-  WorkOrderService.deleteWorkOrder(id).then((res)=>{
-    props.history.push("/workorders");
-  }).catch((error) => {
-    console.log(error);
-  })
-}
+  const deleteWorkOrder = (id) => {
+    WorkOrderService.deleteWorkOrder(id).then((res)=>{
+      props.history.push("/workorders");
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
+
+  const getDate = () => {
+    if(wo != ''){
+      const date = wo.woNumber.substring(2,6) + '-' 
+                 + wo.woNumber.substring(6,8) + '-' 
+                 + wo.woNumber.substring(8,10);
+      return date
+    }
+  }
 
   return (
     <div>
@@ -63,14 +72,25 @@ const deleteWorkOrder = (id) => {
                         <div><b>Serial Number</b> : {wo.serialNumber} <br/> </div>
                         <div><b>Date of Sale</b> : {wo.saleDate} <br/> </div>
                         <div><b>Warrenty Status</b> : {wo.warrentyStatus} </div>
+                        <div><b>Assign To</b> : {wo.assignTo} </div>
                       </div>
                 </div>
               </div>  
-            <div className="comment">
-                <div>Comment Here</div>
-                <textarea></textarea>
-                <div id="add-comment-button"><button>Add</button></div>
-            </div>
+              <div className="work-order-information">
+                <div><b>Date Created</b>
+                  <div className="wo-info-results"> 
+                    {getDate()} 
+                  </div>
+                </div>
+                <div><b>Work Order Status</b>
+                  <div className="wo-info-results" id="blinking-status"> PENDING </div>
+                </div>
+                <Link to="/comment" id="comment-link-button">
+                  <div className="add-comment-button-link">
+                    Add or View Comments
+                  </div>
+                </Link> 
+              </div>
           </div>
         </div>
     </div>

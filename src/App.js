@@ -12,6 +12,9 @@ import Header from "./Components/Header";
 import UserView from "./Components/UserView";
 import SidePanel from "./Components/SidePanel";
 import WorkOrderUpdate from "./Components/WorkOrderUpdate";
+import TechnicianCreate from "./Components/TechnicianCreate";
+import WorkOrderTransfer from "./Components/WorkOrderTransfer";
+import Comment from "./Components/Comment";
 
 function App() {
   return (
@@ -56,6 +59,18 @@ function App() {
 
               <Route exact path="/update-workorder/:id">
                   <WorkOrderUpdate/>
+              </Route>
+              
+              <Route exact path="/create-technician">
+                  <TechnicianCreate/>
+              </Route>
+
+              <Route exact path="/transfer-workorder">
+                  <WorkOrderTransfer/>
+              </Route>
+
+              <Route exact path="/comment">
+                  <Comment/>
               </Route>
 
               <Route path="*">

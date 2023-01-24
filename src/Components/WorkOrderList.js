@@ -3,13 +3,14 @@ import WorkOrderService from '../WorkOrderService';
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-import SearchBar from "./SearchBar";
+import searchIcon from "./Icons/search.svg"
 import CreateNew from "./CreateNew";
 
 function WorkOrderList() {
 
   const [workorders, setWorkorders] = useState([]);
   const [isPending, setIsPending] = useState(false);
+  const [search, setSearch] = useState('');
 
   const getAllWorkOrder = () => {
     setIsPending(true)
@@ -27,7 +28,15 @@ function WorkOrderList() {
 
   return(
     <div>
-      <SearchBar />
+      <span className="searchbar-content">
+            <span className="search">
+                <input id="search-input" type="text"  
+                placeholder="Search Work Order"
+                value={search}
+                onChange = {(e) => setSearch(e.target.value)}/>
+                <img id="magnifying-glass" src={searchIcon} alt="search" />
+            </span>
+        </span>
 
       <Link to={'/create-workorder'}>
         <CreateNew />
@@ -42,7 +51,11 @@ function WorkOrderList() {
       <div className="wo-list-container">
         {isPending && <div className='loading'>Loading...</div>}
         {
-          workorders.map((wo) => {
+          workorders.filter((item) => {
+            return search.toLowerCase() === '' ? item :
+             (item.woNumber.toLowerCase().includes(search.toLowerCase()) || 
+              item.productName.toLowerCase().includes(search.toLowerCase()));
+          }).map((wo) => {
             return ( 
               <Link id="wo-link" to={`/workorders/${wo.id}`} key={wo.id}> 
                 <div className="wo-previwe" >

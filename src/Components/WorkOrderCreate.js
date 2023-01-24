@@ -18,9 +18,10 @@ const CreateWorkOrder = (props) => {
     const [email, setEmail] = useState('');
     const [productName, setProductName] = useState('');
     const [serialNumber, setSerialNumber] = useState('');
-    const [saleDate, setSaleDate] = useState('');
+    const [saleDate, setSaleDate] = useState(new Date());
+    const [assignTo, setAssignTo] = useState('- Choose technician -');
     const [warrentyStatus, setWarrentyStatus] = useState('UNDER WARRENTY');
-    const [errorMessage, setErrorMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('no-error-class');
     
     const saveWorkorder = (e) =>{
         e.preventDefault(); 
@@ -28,12 +29,13 @@ const CreateWorkOrder = (props) => {
         if(cname === '' || nic=== '' || 
            phone === '' || address === '' || 
            email === '' || productName === ''||
-           serialNumber === '' || saleDate === ''){
-            setErrorMessage("Please fill all the feilds");
+           serialNumber === '' || saleDate === '' || 
+           assignTo === '' || assignTo === '- Choose technician -'){
+            setErrorMessage("error-class");
             return;
         }
         else{
-            setErrorMessage(''); 
+            setErrorMessage('no-error-class'); 
         }
 
         let workorder = {woNumber:WOnumber,
@@ -41,6 +43,7 @@ const CreateWorkOrder = (props) => {
                         serialNumber:serialNumber,
                         saleDate:saleDate,
                         warrentyStatus:warrentyStatus,
+                        assignTo:assignTo,
                         nic:nic,
                         cname:cname, 
                         address:address,
@@ -63,7 +66,7 @@ const CreateWorkOrder = (props) => {
         <div>
             <form id="create-workorder-form">
                 <h2>Create New Work Order</h2>
-                <div className="create-form">
+                <div className="create-workorder-form-container">
                     <div className="form-user-info">
                         <h4>User Information</h4>
                         <label>Customer Name: </label><br/>
@@ -111,7 +114,7 @@ const CreateWorkOrder = (props) => {
                         /><br/>
                         
                         <label>Date of sale: </label><br/>
-                        <input type="text" required
+                        <input type="date" required className="date-picker"
                             value={saleDate}
                             onChange = {(e) => setSaleDate(e.target.value)}
                         /><br/>
@@ -124,12 +127,28 @@ const CreateWorkOrder = (props) => {
                             <option value="UNDER WARRENTY">UNDER WARRENTY</option>
                             <option value="OVER WARRENTY">OVER WARRENTY</option>
                         </select>
+
+                        <label>Assign to</label>
+                        <select required
+                            value={assignTo}
+                            onChange = {(e) => setAssignTo(e.target.value)}>
+                            <option value="- Choose technician -">- Choose technician -</option> 
+                            <option value="AUDIO">AUDIO</option>
+                            <option value="COMPUTERS">COMPUTERS</option>
+                            <option value="GENERATORS">GENERATORS</option>
+                            <option value="REFREGIRATOR">REFREGIRATOR</option>
+                            <option value="SEWING MACHINE">SEWING MACHINE</option>
+                            <option value="TELEVISION">TELEVISION</option>
+                            <option value="WASHING MACHINE">WASHING MACHINE</option>
+                        </select>
                     </div>
-                </div>    
-                <div className="errorMessage">
-                    {errorMessage}
                 </div>  
-                <div id="form-buttons">
+
+                <div className={errorMessage}>
+                    Please fill all the feilds with correct information
+                </div>  
+
+                <div id="form-buttons-workorder">
                     <button onClick={saveWorkorder} className="create-wo-form-button">Create</button>
                     <button className="create-wo-form-button" onClick={cancel} >Cancel</button>
                 </div>
