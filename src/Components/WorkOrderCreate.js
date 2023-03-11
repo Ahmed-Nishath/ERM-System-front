@@ -7,7 +7,7 @@ const CreateWorkOrder = (props) => {
 
     var today = new Date();
     var dd = String(today.getDate()).padStart(2,'0');
-    var mm = String(today.getMonth()+1).padStart(2,'0'); //Januaru=0
+    var mm = String(today.getMonth()+1).padStart(2,'0'); //January = 0
     var yyyy = String(today.getFullYear()).padStart(2,'0');
     const WOnumber = "WO"+yyyy+mm+dd+""+rand;
 
@@ -51,14 +51,14 @@ const CreateWorkOrder = (props) => {
                         phone:phone,
                         }
         
-        WorkOrderService.createWorkOrder(workorder).then(res =>{
+        WorkOrderService.createWorkOrder(workorder).then( res => {
             props.history.push("/workorders");
-        }).catch(error =>{
+        }).catch(error => {
             console.log(error);
         });
     }
 
-    const cancel = () =>{
+    const cancel = () => {
         props.history.push("/workorders");
     } 
     

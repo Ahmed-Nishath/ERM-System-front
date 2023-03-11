@@ -4,12 +4,12 @@ import { withRouter } from "react-router-dom";
 import searchIcon from "./Icons/search.svg";
 import Header from "./Header";
 
-function WorkOrderTransfer(props) {
+function UpdateEstimate(props) {
   const [workorders, setWorkorders] = useState([]);
   const [search, setSearch] = useState("");
 
-  const [reason, setReason] = useState('');
-  const [technician, setTechnician] = useState('');
+  const [cost, setCost] = useState(0);
+  const [estimateDate, setEstimateDate] = useState(new Date());
   const [errorMessage, setErrorMessage] = useState('no-error-class');
 
   const [dynamic, setDynamic] = useState('');
@@ -43,14 +43,16 @@ function WorkOrderTransfer(props) {
   const saveTranfer = (e) =>{
     e.preventDefault(); 
 
-    if(reason === '' || technician === '' || selectedWo ===''){
+    if(cost == 0 || estimateDate === '' || selectedWo === ''){
         setErrorMessage("error-class-transfer");
         return;
     }
     else{
         setErrorMessage('no-error-class'); 
     }
-    selectedWo.assignTo = technician;
+    selectedWo.cost = cost;
+    selectedWo.estimatedCompletionDate = estimateDate;
+    selectedWo.status = "PENDING ADMIN APPROVAL";
     WorkOrderService.updateWorkOrder(selectedWo.id, selectedWo).then(res =>{
         props.history.push("/");
     }).catch(error =>{
@@ -59,13 +61,13 @@ function WorkOrderTransfer(props) {
   }
 
   const cancel = () => {
-    props.history.push("/");
+    props.history.push("/"); 
   }
 
   return (
       <div className="transfer">
           <div className="header-transfer">
-            <Header user="Technician" page="Transfer Work Order" />
+            <Header user="Technician" page="Update Estimate" />
           </div>
 
           <div className="tranfer-main-container">
@@ -87,9 +89,9 @@ function WorkOrderTransfer(props) {
                   {workorders
                     .filter((item) => {
                       return search.toLowerCase() === ""
-                        ? ""
-                        : item.woNumber.toLowerCase().includes(search.toLowerCase()) ||
-                        item.productName.toLowerCase().includes(search.toLowerCase());
+                        ? "" : 
+                        item.status === "PENDING ESTIMATION" && item.woNumber.toLowerCase().includes(search.toLowerCase()) ||
+                        item.status === "PENDING ESTIMATION" && item.productName.toLowerCase().includes(search.toLowerCase());
                     })
                     .map((wo) => {
                       return (
@@ -116,36 +118,31 @@ function WorkOrderTransfer(props) {
 
               <div className="transfer-operations">
                 <form id="transfer-workorder-form">
-                <div className="transfer-feilds">
-                  <label>Transfer to</label><br />
-                  <select required
-                    value={technician}
-                    onChange={(e) => setTechnician(e.target.value)}>
-                      <option value="- Choose technician -">- Choose Technician -</option> 
-                      <option value="AUDIO">AUDIO</option>
-                      <option value="COMPUTERS">COMPUTERS</option>
-                      <option value="GENERATORS">GENERATORS</option>
-                      <option value="REFREGIRATOR">REFREGIRATOR</option>
-                      <option value="SEWING MACHINE">SEWING MACHINE</option>
-                      <option value="TELEVISION">TELEVISION</option>
-                      <option value="WASHING MACHINE">WASHING MACHINE</option>
-                  </select>
-                </div>
 
-                <div className="transfer-feilds">
-                  <label>Transfer reason: </label><br />
-                  <textarea required
-                    value={reason}
-                    onChange={(e) => setReason(e.target.value)}
+                  <h3  id="estimation-info">Estimation Information</h3>
+
+                  <div className="update-estimate-form">
+                    <label>Estimated Cost</label><br/>
+                    <input required placeholder={selectedWo.cost}
+                    value={cost}
+                    onChange={(e) => setCost(e.target.value)}
                   />
-                </div>
+                  </div>
+
+                  <div style={{marginBottom:"14px"}} className="update-estimate-form">
+                  <label>Estimate of Completion: </label><br/>
+                        <input type="date" required className="date-picker" 
+                            value={estimateDate}
+                            onChange = {(e) => setEstimateDate(e.target.value)}
+                  />
+                  </div>
 
                   <div className={errorMessage}>
                     Please fill all the feilds with correct information
                   </div>
 
                   <div id="form-buttons-transfer">
-                    <button onClick={saveTranfer} className="transfer-form-transfer-button">Transfer</button>
+                    <button onClick={saveTranfer} className="transfer-form-transfer-button">Apply</button>
                     <button className="transfer-form-cancel-button" onClick={cancel} >Cancel</button>
                   </div>
                 </form>
@@ -154,4 +151,4 @@ function WorkOrderTransfer(props) {
       </div>
   );
 }
-export default withRouter(WorkOrderTransfer);
+export default withRouter(UpdateEstimate);

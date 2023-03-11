@@ -18,7 +18,7 @@ const WorkOrderUpdate = (props) => {
     
     const {id} = useParams();
 
-    useEffect(() =>{
+    useEffect(() => {
         WorkOrderService.getWorkOrderById(id).then(res =>{
             setWoNumber(res.data.woNumber)
             setName(res.data.cname)
@@ -36,7 +36,7 @@ const WorkOrderUpdate = (props) => {
         });
     },[]);
 
-    const updateWorkorder = (e) =>{
+    const updateWorkorder = (e) => {
         e.preventDefault(); 
         
         if(cname === '' || nic=== '' || 
@@ -60,18 +60,18 @@ const WorkOrderUpdate = (props) => {
                         cname:cname, 
                         address:address,
                         email:email,
-                        phone:phone,
+                        phone:phone    //removed a comma here
                         }
         
-        WorkOrderService.updateWorkOrder(id, workorder).then(res =>{
-            props.history.push("/workorders");
-        }).catch(error =>{
+        WorkOrderService.updateWorkOrder(id, workorder).then(res => {
+            props.history.push(`/workorders/${id}`);
+        }).catch(error => {
             console.log(error);
         });
     }
 
     const cancel = () =>{
-        props.history.push("/workorders");
+        props.history.push(`/workorders/${id}`);
     } 
 
     return ( 

@@ -4,13 +4,26 @@ import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import searchIcon from "./Icons/search.svg"
-import CreateNew from "./CreateNew";
 
-function WorkOrderList() {
+function ApproveEstimate() {
 
   const [workorders, setWorkorders] = useState([]);
   const [isPending, setIsPending] = useState(false);
   const [search, setSearch] = useState('');
+
+  const updateWorkorder = (wo, status) => {
+    return function(e){
+        e.preventDefault(); 
+
+        wo.status = status;
+
+        WorkOrderService.updateWorkOrder(wo.id, wo).then(res => {
+            getAllWorkOrder();
+        }).catch(error => {
+            console.log(error);
+        });  
+    };
+}
 
   const getAllWorkOrder = () => {
     setIsPending(true)
@@ -38,33 +51,32 @@ function WorkOrderList() {
             </span>
         </span>
 
-      <Link to={'/create-workorder'}>
-        <CreateNew />
-      </Link>
-
       <div className="header-tags">
         <div>WO number</div>
-        <div>Product</div>
-        <div>Customer</div>
-        <div>Contact</div>
+        <div>Estimated Cost</div>
+        <div></div>
+        <div></div>
       </div>
       <div className="wo-list-container">
         {isPending && <div className='loading'>Loading...</div>}
         {
           workorders.filter((item) => {
-            return search.toLowerCase() === '' ? item :
-             (item.woNumber.toLowerCase().includes(search.toLowerCase()) || 
-              item.productName.toLowerCase().includes(search.toLowerCase()));
+            return search.toLowerCase() === '' ? item.status === "PENDING ADMIN APPROVAL" :
+             (item.status === "PENDING ADMIN APPROVAL" && item.woNumber.toLowerCase().includes(search.toLowerCase()));
           }).map((wo) => {
             return ( 
-              <Link id="wo-link" to={`/workorders/${wo.id}`} key={wo.id}> 
-                <div className="wo-previwe" >
-                  <div> {wo.woNumber} </div>
-                  <div> {wo.productName} </div>
-                  <div> {wo.cname} </div>
-                  <div> {wo.phone} </div>
+                <div className="wo-previwe" id = "delivery-preview" key={wo.id} >
+                    <Link id="wo-link" to={`/workorders/${wo.id}`}> 
+                        <div> {wo.woNumber} </div>
+                    </Link>
+                  <div> {wo.cost} </div>
+                  <div id = "estimate-approve-button">
+                    <button onClick={updateWorkorder(wo, "PENDING CUSTOMER APPROVAL")}>APPROVE</button>  
+                  </div>
+                  <div id = "estimate-reject-button">
+                    <button onClick={updateWorkorder(wo, "ESTIIMATE REJECTED")}>REJECT</button> 
+                  </div>
                 </div>
-              </Link>
             );
           })
         }
@@ -72,4 +84,4 @@ function WorkOrderList() {
     </div>
   )
 }
-export default withRouter(WorkOrderList);
+export default withRouter(ApproveEstimate);

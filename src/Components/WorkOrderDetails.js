@@ -9,16 +9,16 @@ import { Link } from "react-router-dom";
   const {id} = useParams();
   const [wo, setWo] = useState([]);
 
-  useEffect(() =>{
-    WorkOrderService.getWorkOrderById(id).then(res =>{
+  useEffect(() => {
+    WorkOrderService.getWorkOrderById(id).then(res => {
         setWo(res.data)
-    }).catch(error =>{
+    }).catch(error => {
         console.log(error);
     })
   },[])
 
   const deleteWorkOrder = (id) => {
-    WorkOrderService.deleteWorkOrder(id).then((res)=>{
+    WorkOrderService.deleteWorkOrder(id).then((res) => {
       props.history.push("/workorders");
     }).catch((error) => {
       console.log(error);
@@ -83,9 +83,22 @@ import { Link } from "react-router-dom";
                   </div>
                 </div>
                 <div><b>Work Order Status</b>
-                  <div className="wo-info-results" id="blinking-status"> PENDING </div>
+                  <div className="wo-info-results" id="blinking-status"> {wo.status} </div>
                 </div>
-                <Link to="/comment" id="comment-link-button">
+
+                <div><b>Cost</b>
+                  <div className="wo-info-results"> 
+                    {wo.cost == 0 ? "Estimate not updated yet" : wo.cost}
+                  </div>
+                </div>
+
+                <div><b>Estimated completion date</b>
+                  <div className="wo-info-results"> 
+                    {wo.estimatedCompletionDate}
+                  </div>
+                </div>
+
+                <Link to={`/comment/${wo.id}`} id="comment-link-button">
                   <div className="add-comment-button-link">
                     Add or View Comments
                   </div>

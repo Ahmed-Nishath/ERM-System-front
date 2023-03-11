@@ -140,6 +140,49 @@ hr{
 }
 
 /* _____________________________________________________________ */
+/* ApproveEstimate*/
+
+#estimate-approve-button {
+  width: 100px;
+}
+
+#estimate-reject-button {
+  width: 100px;
+}
+
+#estimate-approve-button button{
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  background-color: rgb(0, 83, 19);
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  width: 100px;
+  height: 30px;
+}
+
+#estimate-reject-button button{
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  background-color: rgb(121, 0, 0);
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  width: 100px;
+  height: 30px;
+}
+
+#estimate-approve-button button:hover{
+  background-color: rgb(0, 26, 6);
+}
+
+#estimate-reject-button button:hover{
+  background-color: rgb(54, 0, 0); 
+}
+
+/* _____________________________________________________________ */
 /* Comment*/
 
 .comment{
@@ -198,6 +241,7 @@ hr{
   outline: none;
   border: none;
   border-radius: 5px;
+  overflow-wrap: break-word;
 }
 
 .previous-comments-list:nth-child(odd){
@@ -214,6 +258,14 @@ hr{
   margin-bottom: 25px;
   margin-left: 20px;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+#cancel-comment-button{
+  margin-right: 20px;
+}
+
+#cancel-comment-button button:hover{
+  background-color: rgb(166, 0, 0);
 }
 
 /* _____________________________________________________________ */
@@ -294,7 +346,7 @@ select{
 .form-feilds-container{
   width: 520px;
   margin-inline: auto;
-  background-color: rgba(18, 231, 255, 0.5);    
+  background-color: rgba(88, 79, 143, 0.724);    
   border-radius: 30px;
 }
 
@@ -366,6 +418,34 @@ select{
   margin-top: 25px;
 }
 
+/* _____________________________________________________________ */
+/* Delivery */
+#delivery-complete-button{
+  width: 190px;
+  text-align: center;
+}
+
+#delivery-complete-button button{
+  background-color: green;
+  color: white;
+  height: 35px;width: 180px;
+  border-radius: 30px;
+  border: none;
+}
+
+#delivery-complete-button button:hover{
+  background-color: rgb(6, 20, 6);
+  color: #00e5ff;
+}
+
+#delivery-preview{
+  background-color: rgba(0, 127, 224, 0.435);
+}
+
+#delivery-preview:hover{
+  background-color: rgba(0, 127, 224, 0.808);
+}
+
 
 /* _____________________________________________________________ */
 /* Header */
@@ -376,6 +456,37 @@ select{
 .header > h2{
   margin-left: 100px;
   margin-bottom: 20px;
+}
+
+
+/* _____________________________________________________________ */
+/* Lists */
+
+.list-previwe{
+  display:flex;
+  justify-content:space-around;
+}
+
+.list-previwe > div{
+  width: 150px;
+}
+
+.list-previwe > div{
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list-previwe{
+  background-color: rgba(3, 87, 69, 0.318);
+  padding-inline: 20px;
+  padding-block: 15px;
+  margin-block: 8px;
+  margin-left: 35px;
+  border-radius: 5px;
+  width: 92.5%;
+  font-size: 18px;
+  text-overflow:ellipsis;
 }
 
 
@@ -635,7 +746,40 @@ body.active-modal {
 }
 
 /* _____________________________________________________________ */
+/* Update Estimate */
+
+#estimation-info{
+  margin-top: 45px;
+  margin-left: 13px;
+}
+
+.update-estimate-form{
+  margin-left: 14px;
+  margin-top: 30px;
+}
+
+.update-estimate-form label{
+  font-size: 17px;
+}
+
+.update-estimate-form input{
+  font-size: 16px;
+  margin-top: 10px;
+  width: 300px;
+  height: 35px;
+  padding-left: 18px;
+  border-width: 1px;
+  border-radius: 30px;
+}
+
+/* _____________________________________________________________ */
 /* User View */
+
+#user-view-heading{
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
 #heading-user-view{
   margin-top: 50px;
 }
@@ -644,12 +788,12 @@ body.active-modal {
   display: flex; 
   justify-content: space-between;
   margin-top: 40px;
-  margin-inline: 50px;
+  margin-inline: 100px;
 }
 
 .user-view-details-block, .user-view-cost-block{
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 28px;
   margin-inline: 30px;
 }
@@ -810,7 +954,7 @@ p ~ hr{
   margin-right: 25px;
   border: none;
   border-radius: 25px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
 }
 
 .customer-details{
@@ -818,7 +962,7 @@ p ~ hr{
 }
 
 .customer-details > div, .product-details > div{
-  margin-block: 18px;
+  margin-block: 25px;
   width: 85%;
 }
 
@@ -836,18 +980,18 @@ textarea:focus, input:focus{
 
 .work-order-information{
   margin: 20px;
-  margin-top: 30px;
+  margin-top:5px;
   margin-left: 5px;
   width: 300px;
 }
 
 .work-order-information > div{
-  margin-bottom: 30px;
+  margin-bottom: 18px;
   font-size: 17px;
 }
 
 .wo-info-results{
-  margin-top: 7px;
+  margin-top: 5px;
 }
 
 #blinking-status{
@@ -857,10 +1001,10 @@ textarea:focus, input:focus{
 }
 
 .add-comment-button-link{
-  width: 150px;
+  width: 210px;
   height: 55px;
-  padding-top: 5px;
-  margin-top: 40px;
+  padding-top: 15px;
+  margin-top: 20px;
   text-align: center;
   background-color: rgb(70, 70, 70);
   border: none;
@@ -877,6 +1021,7 @@ textarea:focus, input:focus{
 #comment-link-button{
   text-decoration: none;
 }
+
 
 /* _____________________________________________________________ */
 /* Work Order List */
@@ -977,12 +1122,6 @@ textarea:focus, input:focus{
 .wo-list-container{
   height: 50vh;
   overflow-y: scroll;
-}
-
-.wo-previwe > div{
-  overflow:hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .test{
@@ -1143,97 +1282,32 @@ textarea:focus, input:focus{
   margin-bottom: -20px;
 }
 
-/*DO FULL MOBILE RESPONSIVENESS TO USER VIEW*/
-
 
 
 /* _____________________________________________________________ */
 /* Media Queries */
-/* @media (max-width:930px){
-  .wo-info-preview{
-    display: block;
-  }
-
-  .comment{
-    width: 100%;
-  }
-
-  .wo-info{
-    width: 100%;
-    margin: 0px;
-    margin-right : 30px;
-  }
-} */
-
-
-/* @media (max-width:885px){
-  .search{
-    margin-right: 10px;
-  }
-
-  .wo-info{
-    display: block;
-    width: 100%;
-  }
-
-  .comment{
-    width: 100%;
-  }
-
-  body{
-    display: flex;
-    justify-content: center;
-  }
-} */
-
-
-/* @media (max-width:780px){
-  body{
-    margin: 0px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-  }
-
-  h1{
-    margin-left: 0px;
-  }
-
-  .buttons{
-    align-items: center;
-    margin-top: 15px;
-  }
-
-  #create{
-    float: none;
-    margin: 0px;
-    margin-inline: 10px;
-    margin-top: 25px;
-    padding-inline: 20px;
-  }
-
-  input{
-    margin: 5px;
-    margin-inline: 0px;
-    width: 80%;
-  }
-
-  .search{
-    margin: 0px;
-  }
-
-  .searchbar-content {
-    
-  }
-
-  .comment{
-    width: 100%;
-  }
-
-  .product ,.customer{
-    width: 100%;
-    margin: 0px;
-    padding: 0px;
+@media (max-width:1120px){
+  .user-view{
     margin-inline: 30px;
   }
-} */
+ 
+} 
+
+@media (max-width:900px){
+  .user-view{
+    display: block;
+  }
+
+  .user-view > div{
+    width: 250px;
+    margin-inline: auto;
+    margin-block: 15px;
+  }
+ 
+} 
+
+@media (max-width:520px){
+  #user-view-heading{
+    margin-left: 20px;
+  }
+}

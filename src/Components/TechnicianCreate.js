@@ -38,7 +38,7 @@ const TechnicianCreate = (props) => {
                             feild:feild
                         }
     
-        TechnicianService.createTechnician(technician).then(res =>{
+        TechnicianService.createTechnician(technician).then(res => {
             props.history.push("/technicians");
         }).catch(error =>{
             console.log(error);

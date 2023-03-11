@@ -8,11 +8,15 @@ class WorkOrderService{
     }
 
     createWorkOrder(workorder){
-        return Axios.post(WORKORDER_API_BASE_URL, workorder)
+        return Axios.post(WORKORDER_API_BASE_URL, workorder);
     }
 
     getWorkOrderById(id){
-        return Axios.get(WORKORDER_API_BASE_URL + '/' + id)
+        return Axios.get(WORKORDER_API_BASE_URL + '/' + id);
+    }
+
+    getWorkOrderByWO(woNumber){
+        return Axios.get(WORKORDER_API_BASE_URL + '/user/' + woNumber);
     }
 
     updateWorkOrder(id, workorder){
@@ -21,6 +25,14 @@ class WorkOrderService{
 
     deleteWorkOrder(id){
         return Axios.delete(WORKORDER_API_BASE_URL + '/' + id);
+    }
+
+    getComment(id){
+        return Axios.get(WORKORDER_API_BASE_URL + '/comment/' + id);
+    }
+
+    updateComment(id, comment){
+        return Axios.put(WORKORDER_API_BASE_URL + '/comment/' + id, comment);
     }
 }
 export default new WorkOrderService();

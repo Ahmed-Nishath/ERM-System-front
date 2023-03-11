@@ -1,21 +1,20 @@
 import React, {useEffect, useState } from 'react';
-import WorkOrderService from '../WorkOrderService';
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import TechnicianService from "../TechnicianService";
 import searchIcon from "./Icons/search.svg"
 import CreateNew from "./CreateNew";
 
-function WorkOrderList() {
+function TechnicianList() {
 
-  const [workorders, setWorkorders] = useState([]);
+  const [technicians, setTechnicians] = useState([]);
   const [isPending, setIsPending] = useState(false);
   const [search, setSearch] = useState('');
 
-  const getAllWorkOrder = () => {
+  const getAllTechnicians = () => {
     setIsPending(true)
-    WorkOrderService.getWorkOrders().then((res) => {
-      setWorkorders(res.data);
+    TechnicianService.getTechnicians().then((res) => {
+      setTechnicians(res.data);
       setIsPending(false)
     }).catch(error => { 
       console.log(error);  
@@ -23,7 +22,7 @@ function WorkOrderList() {
   }
 
   useEffect(() => {
-    getAllWorkOrder();
+    getAllTechnicians();
   }, []);
 
   return(
@@ -31,38 +30,38 @@ function WorkOrderList() {
       <span className="searchbar-content">
             <span className="search">
                 <input id="search-input" type="text"  
-                placeholder="Search Work Order"
+                placeholder="Search Technician"
                 value={search}
                 onChange = {(e) => setSearch(e.target.value)}/>
                 <img id="magnifying-glass" src={searchIcon} alt="search" />
             </span>
         </span>
 
-      <Link to={'/create-workorder'}>
+      <Link to={'/create-technician'}>
         <CreateNew />
       </Link>
 
       <div className="header-tags">
-        <div>WO number</div>
-        <div>Product</div>
-        <div>Customer</div>
-        <div>Contact</div>
+        <div>Name</div>
+        <div>NIC</div>
+        <div>Phone</div>
+        <div>Feild</div>
       </div>
       <div className="wo-list-container">
         {isPending && <div className='loading'>Loading...</div>}
         {
-          workorders.filter((item) => {
+          technicians.filter((item) => {
             return search.toLowerCase() === '' ? item :
-             (item.woNumber.toLowerCase().includes(search.toLowerCase()) || 
-              item.productName.toLowerCase().includes(search.toLowerCase()));
-          }).map((wo) => {
+             (item.tname.toLowerCase().includes(search.toLowerCase()) || 
+              item.nic.toLowerCase().includes(search.toLowerCase()));
+          }).map((tech) => {
             return ( 
-              <Link id="wo-link" to={`/workorders/${wo.id}`} key={wo.id}> 
+              <Link id="wo-link" to={`/technicians/${tech.id}`} key={tech.id}> 
                 <div className="wo-previwe" >
-                  <div> {wo.woNumber} </div>
-                  <div> {wo.productName} </div>
-                  <div> {wo.cname} </div>
-                  <div> {wo.phone} </div>
+                  <div> {tech.tname} </div>
+                  <div> {tech.nic} </div>
+                  <div> {tech.phone} </div>
+                  <div> {tech.feild} </div>
                 </div>
               </Link>
             );
@@ -72,4 +71,4 @@ function WorkOrderList() {
     </div>
   )
 }
-export default withRouter(WorkOrderList);
+export default withRouter(TechnicianList);
