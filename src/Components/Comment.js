@@ -44,7 +44,16 @@ const Comment = (props) => {
         let commentUpdated = {comment:new Date().toGMTString() + " | " + newComment}
 
         WorkOrderService.updateComment(id, commentUpdated).then(res => {
-            props.history.push(`/workorders/${id}`);
+            // props.history.push(`/workorders/${id}`);
+
+            WorkOrderService.getComment(id).then(res => {
+                setComments(res.data);
+            }).catch(error =>{
+                console.log(error); 
+            });
+            
+            setNewComment('');
+
         }).catch(error => {
             console.log(error);
         });

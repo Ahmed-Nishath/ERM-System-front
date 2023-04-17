@@ -49,6 +49,7 @@ const CreateWorkOrder = (props) => {
                         address:address,
                         email:email,
                         phone:phone,
+                        status:"PENDING ESTIMATION",
                         }
         
         WorkOrderService.createWorkOrder(workorder).then( res => {

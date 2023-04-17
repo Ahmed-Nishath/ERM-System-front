@@ -9,7 +9,6 @@ import WorkOrderList from "./Components/WorkOrderList";
 import WorkOrderDetails from "./Components/WorkOrderDetails";
 import NotFound from "./Components/NotFound";
 import Header from "./Components/Header";
-import UserView from "./Components/UserView";
 import SidePanel from "./Components/SidePanel";
 import WorkOrderUpdate from "./Components/WorkOrderUpdate";
 import TechnicianCreate from "./Components/TechnicianCreate";
@@ -23,6 +22,10 @@ import WorkOrderComplete from "./Components/WorkOrderComplete";
 import PaymentUpdate from "./Components/PaymentUpdate";
 import ApproveEstimate from "./Components/ApproveEstimate";
 import UpdateEstimate from "./Components/UpdateEstimate";
+
+import DashboardTechnician from "./Components/DashboardTechnician";
+import WorkOrderListTechnician from "./Components/WorkOrderListTechnician";
+import WorkOrderDetailsTechnician from "./Components/WorkOrderDetailsTechnician";
 
 function Main() {
 
@@ -42,19 +45,16 @@ function Main() {
             </div>
 
             <Switch>
-              <Route exact path="/">
-                <DashboardAdmin/>
-              </Route>
 
               <Route exact path="/workorders">
                 <div>
-                  <Header user="Admin" page="Work Orders"/>
+                  <Header user="" page="Work Orders"/>
                   <WorkOrderList />
                 </div>
               </Route> 
 
               <Route exact path="/workorders/:id">
-                  <Header user="Admin" page="Work Orders"/>
+                  <Header user="" page="Work Orders"/>
                   <WorkOrderDetails />
               </Route>
 
@@ -72,14 +72,14 @@ function Main() {
 
               <Route exact path="/customers">
                   <div>
-                  <Header user="Admin" page="Customers"/>
+                  <Header user="" page="Customers"/>
                   <CustomerList/>
                 </div>
               </Route>
 
               <Route exact path="/products">
                   <div>
-                  <Header user="Admin" page="Products"/>
+                  <Header user="" page="Products"/>
                   <ProductList/>
                 </div>
               </Route>
@@ -108,7 +108,7 @@ function Main() {
 
               <Route exact path="/complete">
                 <div>
-                  <Header user="Admin" page="Finish WorkOrder"/>
+                  <Header user="Technician" page="Finish WorkOrder"/>
                   <WorkOrderComplete/>
                 </div>
               </Route>
@@ -131,8 +131,21 @@ function Main() {
                   <UpdateEstimate/>
               </Route>
 
-              <Route exact path="/estimation/:id">
-                  <UserView/>
+              <Route exact path="/admin-dashboard">
+                  <DashboardAdmin/>
+              </Route>
+
+              <Route exact path="/technician-dashboard">
+                  <DashboardTechnician/>
+              </Route>
+
+              <Route exact path="/workorders-technician">
+                  <WorkOrderListTechnician/>
+              </Route>
+
+              <Route exact path="/workorders-technician/:id">
+                  <Header user="Technician" page="Work Orders"/>
+                  <WorkOrderDetailsTechnician />
               </Route>
 
               <Route path="*">

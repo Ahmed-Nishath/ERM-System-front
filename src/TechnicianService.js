@@ -8,7 +8,11 @@ class TechnicianService{
     }
 
     createTechnician(technician){
-        return Axios.post(TECHNICIAN_API_BASE_URL, technician)
+        return Axios.post(TECHNICIAN_API_BASE_URL + '/register', technician)
+    }
+
+    login(technician){
+        return Axios.post(TECHNICIAN_API_BASE_URL + '/login', technician)
     }
 
     getTechnicianById(id){

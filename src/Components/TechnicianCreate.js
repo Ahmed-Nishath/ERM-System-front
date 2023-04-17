@@ -5,36 +5,28 @@ import Header from "./Header";
 
 const TechnicianCreate = (props) => {
     
-    const [tname, setName] = useState('');
-    const [nic, setNIC] = useState('');
-    const [address, setAddress] = useState('');
-    const [phone, setContact] = useState('');
+    const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
-    const [dateofBirth, setDateofBirth] = useState(new Date());
+    const [phone, setContact] = useState('');
     const [feild, setFeild] = useState('');
     const [errorMessage, setErrorMessage] = useState('no-error-class');
 
     const saveTechnician = (e) =>{
         e.preventDefault(); 
         
-        if(tname === '' || nic=== '' || 
-           address === '' || phone === '' || 
-           email === '' || dateofBirth === ''|| 
-           feild === '' || feild === '- Choose feild -'){
+        if(userName === '' || email=== '' || 
+           phone === '' || feild === '' ||  
+           feild === '- Choose feild -') {
             setErrorMessage("error-class");
-
             return;
         }
         else{
             setErrorMessage('no-error-class'); 
         }
 
-        let technician = {  tname:tname, 
-                            nic:nic,
-                            address:address,
-                            phone:phone, 
+        let technician = {  userName:userName, 
                             email:email,
-                            dateofBirth:dateofBirth,
+                            phone:phone, 
                             feild:feild
                         }
     
@@ -57,32 +49,8 @@ const TechnicianCreate = (props) => {
                     <div className="form-feilds" id="form-feild-first">
                         <label>Technicain Name: </label>
                         <input type="text" required 
-                            value={tname}
-                            onChange = {(e) => setName(e.target.value)}
-                        />
-                    </div>
-
-                    <div className="form-feilds">
-                        <label>NIC Number: </label>
-                        <input type="text" required
-                            value={nic}
-                            onChange = {(e) => setNIC(e.target.value)}
-                        />
-                    </div>
-
-                    <div className="form-feilds">
-                        <label>Address: </label>
-                        <input type="text" required
-                            value={address}
-                            onChange = {(e) => setAddress(e.target.value)}
-                        />
-                    </div> 
-
-                    <div className="form-feilds">
-                        <label>Contact number: </label>
-                        <input type="text" required
-                            value={phone}
-                            onChange = {(e) => setContact(e.target.value)}
+                            value={userName}
+                            onChange = {(e) => setUserName(e.target.value)}
                         />
                     </div>
 
@@ -95,10 +63,10 @@ const TechnicianCreate = (props) => {
                     </div>
 
                     <div className="form-feilds">
-                        <label>Date of Birth: </label>
-                        <input type="date" required className="date-picker"
-                            value={dateofBirth}
-                            onChange = {(e) => setDateofBirth(e.target.value)}
+                        <label>Contact number: </label>
+                        <input type="text" required
+                            value={phone}
+                            onChange = {(e) => setContact(e.target.value)}
                         />
                     </div>
 

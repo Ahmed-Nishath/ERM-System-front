@@ -41,29 +41,27 @@ function TechnicianList() {
         <CreateNew />
       </Link>
 
-      <div className="header-tags">
+      <div className="header-tags" id="header-tags-technician">
         <div>Name</div>
-        <div>NIC</div>
+        <div>Email</div>
         <div>Phone</div>
         <div>Feild</div>
       </div>
-      <div className="wo-list-container">
+      <div className="wo-list-container" >
         {isPending && <div className='loading'>Loading...</div>}
         {
           technicians.filter((item) => {
             return search.toLowerCase() === '' ? item :
-             (item.tname.toLowerCase().includes(search.toLowerCase()) || 
+             (item.userName.toLowerCase().includes(search.toLowerCase()) || 
               item.nic.toLowerCase().includes(search.toLowerCase()));
           }).map((tech) => {
             return ( 
-              <Link id="wo-link" to={`/technicians/${tech.id}`} key={tech.id}> 
-                <div className="wo-previwe" >
-                  <div> {tech.tname} </div>
-                  <div> {tech.nic} </div>
+                <div className="wo-previwe" id='technician-previwe' key={tech.id}>
+                  <div> {tech.userName} </div>
+                  <div> {tech.email} </div>
                   <div> {tech.phone} </div>
                   <div> {tech.feild} </div>
                 </div>
-              </Link>
             );
           })
         }

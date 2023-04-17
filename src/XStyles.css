@@ -339,14 +339,14 @@ select{
 /* Create Technician */
 #create-technician-form{
   margin-top: 20px;
-  height: 75vh;
+  height: 80vh;
   overflow-y: scroll;
 }
 
 .form-feilds-container{
   width: 520px;
   margin-inline: auto;
-  background-color: rgba(88, 79, 143, 0.724);    
+  background-color: rgba(255, 184, 19, 0.961);    
   border-radius: 30px;
 }
 
@@ -369,11 +369,20 @@ select{
 
 .form-feilds select{
   margin-right: 10px;
-  margin-bottom: 40px;
 }
 
 #form-buttons-technician{
-  padding-bottom: 30px;
+  padding-bottom: 20px;
+}
+
+.create-technician-button{
+  background-color: #000000dd;
+  color: aliceblue;
+  margin-left: 80px;
+}
+
+.create-technician-button:hover{
+  background-color: #00c610;
 }
 
 /* _____________________________________________________________ */
@@ -478,7 +487,7 @@ select{
 }
 
 .list-previwe{
-  background-color: rgba(3, 87, 69, 0.318);
+  background-color: rgb(0, 82, 34);
   padding-inline: 20px;
   padding-block: 15px;
   margin-block: 8px;
@@ -487,6 +496,7 @@ select{
   width: 92.5%;
   font-size: 18px;
   text-overflow:ellipsis;
+  color: azure;
 }
 
 
@@ -668,6 +678,20 @@ body.active-modal {
   background-color: rgb(220, 220, 220);
 }
 
+#search-input-technician{
+  font-size: 17px;
+  font-style: italic;
+  padding: 5px;
+  padding-block: 8px;
+  padding-left: 15px;
+  width: 50%;
+  border-radius: 10px;
+  color: black;
+  border:none;
+  background-color: rgb(220, 220, 220);
+  margin-top: 60px;
+}
+
 #magnifying-glass{
   align-items: center;
   margin-left: 10px;
@@ -694,6 +718,22 @@ body.active-modal {
 .side-panel-main-container{
   margin-bottom: 30px;
 }
+
+/* _____________________________________________________________ */
+/* Tile */
+#header-tags-technician{
+  background-color: #00d270;
+}
+
+#technician-previwe{
+  background-color: #004951c8;
+  color: aliceblue;
+}
+
+#technician-previwe:hover{
+  background-color: #004951c8;
+}
+
 
 /* _____________________________________________________________ */
 /* Tile */

@@ -1,54 +1,50 @@
 import { Link } from "react-router-dom";
-import homeImg from "./Icons/home.svg";
-import userImg from "./Icons/users.svg";
 
-import deliveryImg from "./Icons/delivery.svg";
+import workorderImg from "./Icons/workorder.svg";
+import userImg from "./Icons/users.svg";
 import partsImg from "./Icons/parts.svg";
+import transferImg from "./Icons/transfer.svg";
 import stockImg from "./Icons/stock.svg";
-import newImg from "./Icons/newservice.svg";
 import settingsImg from "./Icons/settings.svg";
-import reportImg from "./Icons/reports.svg";
+import deviceImg from "./Icons/device.svg";
+import clientsImg from "./Icons/clients.svg";
+import completeImg from "./Icons/update_repair.svg";
+import updateEstimateImg from "./Icons/update_estimate.svg";
 
 import PanelTile from "./PanelTile";
 
 const SidePanel = () => {
     return ( 
         <div className="side-panel-main-container">
-            <Link to="/">
-                <PanelTile name="Home" image={homeImg} />
-            </Link>
-            
+             
             <Link to="/workorders">
-                <PanelTile name="Parts" image={partsImg} />
+                <PanelTile name={"WorkOrders"} image={workorderImg}/>
             </Link>
 
-            <Link to="/login">
-                <PanelTile name="Users" image={userImg} />
+            <Link to="/transfer-workorder">
+                <PanelTile name={"Transfer"} image={transferImg}/>
             </Link>
 
-            <Link to="/delivery">
-                <PanelTile name="Delivery" image={deliveryImg} />
+            <Link to="/estimate-update">
+                <PanelTile name={"Add Estimate"} image={updateEstimateImg}/>
             </Link>
 
-            <Link to="/stocks">
-                <PanelTile name="Stocks" image={stockImg} />
+            <Link to="/complete">
+                <PanelTile name={"Complete WorkOrder"} image={completeImg}/>
             </Link>
 
-            <Link to="/settings">
-                <PanelTile name="Settings" image={settingsImg} />
+            <Link to="/customers">
+                <PanelTile name={"Customers"} image={userImg}/>
             </Link>
 
-            <Link to="/reports">
-                <PanelTile name="Reports" image={reportImg} />
+            <Link to="/products">
+                <PanelTile name={"Products"} image={deviceImg}/>
             </Link>
 
-            <Link to="/add">
-                <PanelTile name="Add" image={newImg} />
-            </Link>
-
-            <Link to="/add">
-                <PanelTile name="Add" image={newImg} />
-            </Link>
+            <PanelTile name={"Parts"} image={partsImg}/>
+            <PanelTile name={"Settings"} image={settingsImg}/>
+            <PanelTile name={"Stock"} image={stockImg}/>
+            <PanelTile name={"Clients"} image={clientsImg}/>
             
         </div>
      );

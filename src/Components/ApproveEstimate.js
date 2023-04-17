@@ -2,9 +2,8 @@ import React, {useEffect, useState } from 'react';
 import WorkOrderService from '../WorkOrderService';
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
-import emailjs from '@emailjs/browser';
-
 import searchIcon from "./Icons/search.svg"
+import EmailService from '../EmailService';
 
 function ApproveEstimate() {
 
@@ -19,7 +18,7 @@ function ApproveEstimate() {
         wo.status = status;
 
         if(status ==="PENDING CUSTOMER APPROVAL" ){
-          sendEmail(wo);
+          EmailService.sendEmail(wo, 'template_h9iaxum');
         }
 
         WorkOrderService.updateWorkOrder(wo.id, wo).then(res => {
@@ -43,21 +42,6 @@ function ApproveEstimate() {
   useEffect(() => {
     getAllWorkOrder();
   }, []);
-
-  const sendEmail = (wo) => {
-    var templateParams = {
-      user_email: wo.email,
-      to_name: wo.cname, 
-      message: 'http://localhost:3000/estimation/'+ wo.woNumber
-    };
-
-      emailjs.send('service_rusnfka', 'template_h9iaxum', templateParams, 'Wd7oGbO9z66LQ5FI4')
-      .then(function(response) {
-        console.log('SUCCESS!', response.status, response.text);
-      }, function(error) {
-        console.log('FAILED...', error);
-      });
-  };
 
   return(
     <div>
